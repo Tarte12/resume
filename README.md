@@ -1,9 +1,19 @@
 # Kim Huisu (김희수)
 ### Junior Backend Developer
 
-> **“AI 팀원의 팀 리더, 데이터를 설계하고 공정을 지휘합니다.”**
+> **“백엔드 인증·보안·데이터 설계를 통해 서비스 안정성을 높입니다.”**
 
-[📄 PDF 이력서 보기/다운로드](https://github.com/Tarte12/resume/blob/main/Kim_Huisu_Resume.pdf)
+[📄 PDF 이력서 보기](https://github.com/Tarte12/resume/blob/main/Kim_Huisu_Resume.pdf)  
+[⬇️ PDF 바로 다운로드](https://github.com/Tarte12/resume/raw/main/Kim_Huisu_Resume.pdf)
+
+---
+
+## 📂 Repository Structure
+- `resume.typ`: 엔트리 템플릿 (레이아웃/조합)
+- `metadata.typ`: 데이터 로더
+- `data/resume.yml`: 이력서 본문 데이터
+- `modules/sections.typ`: 섹션 렌더링 모듈
+- `.github/workflows/build.yml`: PDF 자동 빌드/커밋
 
 ---
 
@@ -22,15 +32,15 @@
 - **다중 리뷰 프로세스**: Claude/CodeRabbit 기반 프로세스 구축으로 이슈 할당부터 PR 리뷰까지 효율화
 
 ### **Technical Solution: 문제 해결 및 설계**
-- **결함 차단**: ModelMapper 제거 후 **정적 팩토리 메서드** 도입으로 Null 주입 결함 원천 차단
-- **데이터 최적화**: 비정규화된 JSON 구조를 **정규화 및 표준 JOIN 설계**로 전환하여 조회 효율성 및 확장성 확보
-- **선순환 환경**: TDD·Lint 자동화 기반 컨벤션 강제로 설계 중심의 리뷰 환경 조성
+- **백엔드 집중 기여**: 45일간 backend 관련 PR 28건 머지(+8,439/-1,482)
+- **보안 강화**: Refresh Token Rate Limiting + Access Token Redis 블랙리스트 적용
+- **API 표준화**: ApiResponseDTO 및 GlobalExceptionHandler 도입으로 응답/오류 처리 일관성 확보
 
 ---
 
 ## 🛠 Tech Stack
 - **Languages & Frameworks**: Java 21, Spring Boot 3.5, Spring Security, JPA/Hibernate
-- **Database**: MySQL, SQLite, Redis, SQLD 자격 보유
+- **Database**: PostgreSQL, MySQL, SQLite, Redis, SQLD 자격 보유
 - **Infra & Tools**: AWS, Docker, GitHub Actions, Claude Code, CodeRabbit, JUnit5
 
 ---
@@ -39,13 +49,15 @@
 
 ### **Cohi-Chat: 개발자를 위한 커피챗 예약 서비스**
 *팀 프로젝트 (2인) / 2026.01 ~ 현재*
-- **Role**: BE/FE, Member 도메인 및 보안 인프라 설계
-- **개요**: FastAPI -> Spring Boot 마이그레이션 및 AI 협업 기반 공정 효율화 프로세스 구축
+- **Role**: Backend Developer (인증/보안/예약 도메인)
+- **개요**: Spring Boot 기반 인증/보안/예약 API 설계 및 운영 안정화
 
 #### **주요 성과**
-1. **아키텍처 개선**: 계층형(Layered) 아키텍처 재구성 및 타입 안정성이 보장되는 수동 매핑 전환
-2. **데이터 정규화**: 비정규화된 JSON 구조를 테이블 분리하여 표준 JPQL JOIN으로 시간·요일 동시 검증 (조회 효율 증대)
-3. **품질 자동화**: TDD 도입 및 유스케이스 기반 테스트 전략 수립, 데이터 상수화 및 given절 추상화로 명세 기능 강화
+1. **인증 인프라 구축**: 회원가입/로그인/로그아웃/토큰 재발급 API 구현 및 JWT 인증 체계 구축
+2. **보안 강화**: Access Token 블랙리스트(Redis) + Refresh Token Rate Limiting(Bucket4j) 적용
+3. **소셜 로그인 구현**: Google/Kakao OAuth2 로그인 백엔드 및 운영 redirect URI 핫픽스 반영
+4. **API 일관성 확보**: ApiResponseDTO + GlobalExceptionHandler 기반의 공통 응답/예외 처리 표준화
+5. **데이터 정합성 개선**: TimeSlot 요일 정규화와 LocalDateTime→Instant 전환으로 시간 처리 일관화
 
 ---
 
@@ -57,6 +69,13 @@
 ## 🏆 ETC
 - **자격증**: SQLD (SQL 개발자) | 2024.12
 - **활동**: 알고리즘 문제 풀이 및 기술 블로그 운영
+
+---
+
+## 🧰 Local Build
+```bash
+typst compile resume.typ Kim_Huisu_Resume.pdf
+```
 
 ---
 

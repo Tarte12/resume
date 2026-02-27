@@ -4,7 +4,9 @@ on:
     branches:
       - main
     paths:
-      - 'resume.yml'
+      - 'data/**'
+      - 'modules/**'
+      - 'metadata.typ'
       - 'resume.typ'
       - '.github/workflows/**'
   workflow_dispatch:

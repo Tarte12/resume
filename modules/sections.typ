@@ -1,64 +1,129 @@
-#import "@preview/finely-crafted-cv:0.3.0": *
+#let c-primary = rgb("#12344d")
+#let c-accent = rgb("#1f6f8b")
+#let c-muted = rgb("#56616b")
+#let c-line = rgb("#d4dde3")
+#let c-soft = rgb("#f4f8fb")
 
-#let render_summary(summary) = [
-  = Professional Summary#super[핵심 요약]
+#let section_title(kr, en) = [
+  #grid(
+    columns: (1fr, auto),
+    align: (left, bottom),
+    column-gutter: 8pt,
+    [#text(size: 12.5pt, weight: 700, fill: c-primary)[#kr]],
+    [#text(size: 7.5pt, tracking: 1.2pt, weight: 700, fill: c-muted)[#upper[#en]]],
+  )
+  #v(-0.15em)
+  #line(length: 100%, stroke: 0.75pt + c-line)
+  #v(0.3em)
+]
 
-  #pad(left: 0.2em)[
-    #text(weight: 650, size: 10.5pt, fill: rgb("#2b8a3e"))[Workflow] \
-    - #summary.workflow
-
-    #v(0.45em)
-
-    #text(weight: 650, size: 10.5pt, fill: rgb("#1971c2"))[Technical] \
-    - #summary.technical
+#let metric_card(title, body, tone: c-accent) = [
+  #box(
+    fill: c-soft,
+    stroke: 0.55pt + c-line,
+    radius: 5pt,
+    inset: 8pt,
+  )[
+    #text(size: 8pt, tracking: 0.8pt, weight: 700, fill: tone)[#upper[#title]]
+    #v(0.2em)
+    #text(size: 9.2pt, fill: c-primary)[#body]
   ]
 ]
 
+#let render_summary(summary) = [
+  #section_title("핵심 요약", "summary")
+  #grid(
+    columns: (1fr, 1fr),
+    column-gutter: 8pt,
+    #metric_card("Workflow", summary.workflow, tone: rgb("#2f7d4a")),
+    #metric_card("Technical", summary.technical, tone: rgb("#1b5f8a")),
+  )
+]
+
 #let render_projects(projects) = [
-  = Projects#super[프로젝트]
-
+  #section_title("프로젝트", "projects")
   #for project in projects [
-    #v(0.4em)
-    #company-heading(text(weight: 700, size: 12pt)[#project.name] + " (" + project.description + ")", start: project.period, end: "")[
-      #job-heading(text(weight: 600, fill: rgb("#495057"))[#project.role])[
-        #for highlight in project.highlights [
-          - #highlight
-        ]
+    #box(
+      fill: c-soft,
+      stroke: 0.55pt + c-line,
+      radius: 6pt,
+      inset: 9pt,
+    )[
+      #grid(
+        columns: (1fr, auto),
+        column-gutter: 8pt,
+        [
+          #text(size: 11.5pt, weight: 700, fill: c-primary)[#project.name]
+          #h(6pt)
+          #text(size: 9.4pt, fill: c-muted)[#project.description]
+        ],
+        [
+          #text(size: 8.8pt, weight: 600, fill: c-muted)[#project.period]
+        ],
+      )
+      #v(0.25em)
+      #text(size: 9.2pt, weight: 600, fill: c-accent)[#project.role]
+      #v(0.35em)
 
-        #v(0.25em)
-        - *Tech Stack:* #text(fill: rgb("#495057"))[#project.stack.join("  |  ")]
+      #for highlight in project.highlights [
+        - #text(size: 9.2pt, fill: c-primary)[#highlight]
       ]
+
+      #v(0.35em)
+      #text(size: 8.3pt, weight: 700, fill: c-muted)[STACK]
+      #line(length: 100%, stroke: 0.45pt + c-line)
+      #text(size: 8.7pt, fill: c-muted)[#project.stack.join(" · ")]
     ]
+    #v(0.4em)
   ]
 ]
 
 #let render_skills(skills) = [
-  = Skills#super[기술 스택]
-
-  #pad(left: 0.2em)[
+  #section_title("기술 스택", "skills")
+  #box(
+    fill: c-soft,
+    stroke: 0.55pt + c-line,
+    radius: 6pt,
+    inset: 8pt,
+  )[
     #grid(
-      columns: (130pt, 1fr),
-      row-gutter: 0.8em,
-      text(weight: 600)[Language & Framework], text(fill: rgb("#333333"))[#skills.language_framework],
-      text(weight: 600)[Data], text(fill: rgb("#333333"))[#skills.data],
-      text(weight: 600)[Security & Auth], text(fill: rgb("#333333"))[#skills.security_auth],
-      text(weight: 600)[Infra & Quality], text(fill: rgb("#333333"))[#skills.infra_quality]
+      columns: (95pt, 1fr),
+      row-gutter: 0.6em,
+      column-gutter: 8pt,
+      [#text(size: 8.4pt, weight: 700, fill: c-accent)[Framework]],
+      [#text(size: 8.8pt, fill: c-primary)[#skills.language_framework]],
+      [#text(size: 8.4pt, weight: 700, fill: c-accent)[Data]],
+      [#text(size: 8.8pt, fill: c-primary)[#skills.data]],
+      [#text(size: 8.4pt, weight: 700, fill: c-accent)[Security]],
+      [#text(size: 8.8pt, fill: c-primary)[#skills.security_auth]],
+      [#text(size: 8.4pt, weight: 700, fill: c-accent)[Infra/Quality]],
+      [#text(size: 8.8pt, fill: c-primary)[#skills.infra_quality]],
     )
   ]
 ]
 
 #let render_education_and_etc(education, etc) = [
-  = Education & ETC#super[학력 및 기타]
-
-  #for edu in education [
-    #company-heading(edu.school, start: edu.period, end: "")[
-      #job-heading(edu.major)[]
+  #section_title("학력 및 기타", "education")
+  #box(
+    fill: c-soft,
+    stroke: 0.55pt + c-line,
+    radius: 6pt,
+    inset: 8pt,
+  )[
+    #for edu in education [
+      #text(size: 9.3pt, weight: 700, fill: c-primary)[#edu.school]
+      #h(4pt)
+      #text(size: 8.9pt, fill: c-muted)[#edu.major]
+      #h(4pt)
+      #text(size: 8.6pt, fill: c-muted)[#edu.period]
     ]
-  ]
 
-  #v(0.5em)
+    #v(0.45em)
+    #line(length: 100%, stroke: 0.45pt + c-line)
+    #v(0.35em)
 
-  #for item in etc [
-    - #text(weight: 600)[#item.title] #text(fill: rgb("#777777"))[| #item.date]
+    #for item in etc [
+      - #text(size: 8.9pt, fill: c-primary)[#item.title] #text(size: 8.6pt, fill: c-muted)[| #item.date]
+    ]
   ]
 ]

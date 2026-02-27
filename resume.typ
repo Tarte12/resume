@@ -1,37 +1,62 @@
-#import "@preview/finely-crafted-cv:0.3.0": *
 #import "metadata.typ": resume_data
 #import "modules/sections.typ": render_summary, render_projects, render_skills, render_education_and_etc
 
-// 기본 폰트 및 페이지 세팅
+#let c-primary = rgb("#12344d")
+#let c-accent = rgb("#1f6f8b")
+#let c-muted = rgb("#56616b")
+#let c-line = rgb("#d4dde3")
+#let c-soft = rgb("#f4f8fb")
+
 #set page(
   paper: "a4",
-  margin: (top: 1.5cm, left: 1.4cm, right: 1.4cm, bottom: 1.7cm),
+  margin: (top: 1.35cm, left: 1.25cm, right: 1.25cm, bottom: 1.45cm),
 )
-#set text(font: ("Pretendard", "Malgun Gothic", "Arial"), fallback: true, size: 10pt)
-#set par(leading: 0.7em)
+#set text(font: ("Pretendard", "Noto Sans CJK KR", "Malgun Gothic", "Arial"), fallback: true, size: 9.6pt)
+#set par(leading: 0.68em)
 
-#show: resume.with(
-  name: resume_data.name,
-  tagline: resume_data.tagline,
-  keywords: resume_data.keywords.join(" · "),
-  icon-contact-header: (
-    ("PHONE", resume_data.contacts.phone),
-    ("EMAIL", link("mailto:" + resume_data.contacts.email, resume_data.contacts.email)),
-    ("GITHUB", link("https://github.com/" + resume_data.contacts.github, "GitHub")),
-    ("BLOG", link(resume_data.contacts.blog, "Velog")),
-  ),
-)
-
-// 섹션 제목 스타일링
-#show heading.where(level: 1): it => [
-  #pad(top: 0.45em, bottom: 0.4em)[
-    #text(size: 13pt, weight: 700, fill: rgb("#343a40"))[#it.body]
-    #v(-0.35em)
-    #line(length: 100%, stroke: 0.6pt + rgb("#ced4da"))
-  ]
+#box(
+  fill: c-soft,
+  stroke: 0.75pt + c-line,
+  radius: 7pt,
+  inset: 10pt,
+)[
+  #grid(
+    columns: (1fr, auto),
+    column-gutter: 12pt,
+    [
+      #text(size: 22pt, weight: 800, fill: c-primary)[#resume_data.name]
+      #v(0.15em)
+      #text(size: 10.5pt, weight: 600, fill: c-accent)[#resume_data.tagline]
+      #v(0.35em)
+      #text(size: 8.6pt, fill: c-muted)[#resume_data.keywords.join("  ·  ")]
+    ],
+    [
+      #grid(
+        columns: (auto, 1fr),
+        column-gutter: 6pt,
+        row-gutter: 4pt,
+        [#text(size: 8pt, weight: 700, fill: c-accent)[PHONE]], [#text(size: 8.8pt, fill: c-primary)[#resume_data.contacts.phone]],
+        [#text(size: 8pt, weight: 700, fill: c-accent)[EMAIL]], [#link("mailto:" + resume_data.contacts.email)[#text(size: 8.8pt, fill: c-primary)[#resume_data.contacts.email]]],
+        [#text(size: 8pt, weight: 700, fill: c-accent)[GITHUB]], [#link("https://github.com/" + resume_data.contacts.github)[#text(size: 8.8pt, fill: c-primary)[github.com/#resume_data.contacts.github]]],
+        [#text(size: 8pt, weight: 700, fill: c-accent)[BLOG]], [#link(resume_data.contacts.blog)[#text(size: 8.8pt, fill: c-primary)[velog.io/@emprimula]]],
+      )
+    ],
+  )
 ]
 
-#render_summary(resume_data.summary)
-#render_projects(resume_data.projects)
-#render_skills(resume_data.skills)
-#render_education_and_etc(resume_data.education, resume_data.etc)
+#v(0.55em)
+
+#grid(
+  columns: (1.72fr, 1fr),
+  column-gutter: 10pt,
+  [
+    #render_summary(resume_data.summary)
+    #v(0.45em)
+    #render_projects(resume_data.projects)
+  ],
+  [
+    #render_skills(resume_data.skills)
+    #v(0.45em)
+    #render_education_and_etc(resume_data.education, resume_data.etc)
+  ],
+)

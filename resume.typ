@@ -20,27 +20,23 @@
   radius: 7pt,
   inset: 10pt,
 )[
+  #text(size: 22pt, weight: 800, fill: c-primary)[#resume_data.name]
+  #v(0.15em)
+  #text(size: 10.5pt, weight: 600, fill: c-accent)[#resume_data.tagline]
+  #v(0.35em)
+  #text(size: 8.6pt, fill: c-muted)[#resume_data.keywords.join("  ·  ")]
+  #v(0.35em)
+  #line(length: 100%, stroke: 0.45pt + c-line)
+  #v(0.3em)
+
   #grid(
-    columns: (1fr, auto),
-    column-gutter: 12pt,
-    [
-      #text(size: 22pt, weight: 800, fill: c-primary)[#resume_data.name]
-      #v(0.15em)
-      #text(size: 10.5pt, weight: 600, fill: c-accent)[#resume_data.tagline]
-      #v(0.35em)
-      #text(size: 8.6pt, fill: c-muted)[#resume_data.keywords.join("  ·  ")]
-    ],
-    [
-      #grid(
-        columns: (auto, 1fr),
-        column-gutter: 6pt,
-        row-gutter: 4pt,
-        [#text(size: 8pt, weight: 700, fill: c-accent)[PHONE]], [#text(size: 8.8pt, fill: c-primary)[#resume_data.contacts.phone]],
-        [#text(size: 8pt, weight: 700, fill: c-accent)[EMAIL]], [#link("mailto:" + resume_data.contacts.email)[#text(size: 8.8pt, fill: c-primary)[#resume_data.contacts.email]]],
-        [#text(size: 8pt, weight: 700, fill: c-accent)[GITHUB]], [#link("https://github.com/" + resume_data.contacts.github)[#text(size: 8.8pt, fill: c-primary)[github.com/#resume_data.contacts.github]]],
-        [#text(size: 8pt, weight: 700, fill: c-accent)[BLOG]], [#link(resume_data.contacts.blog)[#text(size: 8.8pt, fill: c-primary)[velog.io/\@emprimula]]],
-      )
-    ],
+    columns: (auto, 1fr, auto, 1fr),
+    column-gutter: 8pt,
+    row-gutter: 4pt,
+    [#text(size: 8pt, weight: 700, fill: c-accent)[PHONE]], [#text(size: 8.8pt, fill: c-primary)[#resume_data.contacts.phone]],
+    [#text(size: 8pt, weight: 700, fill: c-accent)[EMAIL]], [#link("mailto:" + resume_data.contacts.email)[#text(size: 8.8pt, fill: c-primary)[#resume_data.contacts.email]]],
+    [#text(size: 8pt, weight: 700, fill: c-accent)[GITHUB]], [#link("https://github.com/" + resume_data.contacts.github)[#text(size: 8.8pt, fill: c-primary)[github.com/#resume_data.contacts.github]]],
+    [#text(size: 8pt, weight: 700, fill: c-accent)[BLOG]], [#link(resume_data.contacts.blog)[#text(size: 8.8pt, fill: c-primary)[velog.io/\@emprimula]]],
   )
 ]
 

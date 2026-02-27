@@ -1,0 +1,33 @@
+name: Build Resume PDF
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Typst
+        uses: chgl/setup-typst@v1
+
+      - name: Build Resume
+        run: typst compile resume.typ Kim_Huisu_Resume.pdf
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: resume-pdf
+          path: Kim_Huisu_Resume.pdf
+
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: Kim_Huisu_Resume.pdf
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

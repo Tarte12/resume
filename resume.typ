@@ -15,10 +15,10 @@
   tagline: resume_data.tagline,
   keywords: resume_data.keywords.join(" · "),
   icon-contact-header: (
-    (text(font: "Segoe UI Emoji", "📱"), resume_data.contacts.phone),
-    (text(font: "Segoe UI Emoji", "📧"), link("mailto:" + resume_data.contacts.email, resume_data.contacts.email)),
-    (text(font: "Segoe UI Emoji", "🔗"), link("https://github.com/" + resume_data.contacts.github, "GitHub")),
-    (text(font: "Segoe UI Emoji", "📝"), link(resume_data.contacts.blog, "Velog")),
+    ("PHONE", resume_data.contacts.phone),
+    ("EMAIL", link("mailto:" + resume_data.contacts.email, resume_data.contacts.email)),
+    ("GITHUB", link("https://github.com/" + resume_data.contacts.github, "GitHub")),
+    ("BLOG", link(resume_data.contacts.blog, "Velog")),
   ),
 )
 

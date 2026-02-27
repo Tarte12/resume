@@ -1,8 +1,12 @@
-name: Build Resume PDF
+name: Build and Commit Resume PDF
 on:
   push:
     branches:
       - main
+    paths:
+      - 'resume.yml'
+      - 'resume.typ'
+      - '.github/workflows/**'
 
 jobs:
   build:
@@ -12,30 +16,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Setup Typst
         uses: chgl/setup-typst@v1
 
       - name: Build Resume
-        run: |
-          # 빌드 전 YAML 파일 존재 여부 확인
-          ls -R
-          typst compile resume.typ Kim_Huisu_Resume.pdf
+        run: typst compile resume.typ Kim_Huisu_Resume.pdf
 
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v4
+      - name: Commit PDF
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          name: resume-pdf
-          path: Kim_Huisu_Resume.pdf
-
-      - name: Release Latest PDF
-        uses: marvinpinto/action-automatic-releases@latest
-        with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "latest"
-          prerelease: false
-          title: "Latest Build"
-          files: |
-            Kim_Huisu_Resume.pdf
+          commit_message: "Auto-generate resume PDF [skip ci]"
+          file_pattern: 'Kim_Huisu_Resume.pdf'

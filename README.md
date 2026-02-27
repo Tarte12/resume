@@ -3,7 +3,7 @@
 
 > **“AI 팀원의 팀 리더, 데이터를 설계하고 공정을 지휘합니다.”**
 
-[📄 최신 PDF 이력서 다운로드](https://github.com/Tarte12/resume/releases/download/latest/Kim_Huisu_Resume.pdf)
+[📄 PDF 이력서 보기/다운로드](https://github.com/Tarte12/resume/blob/main/Kim_Huisu_Resume.pdf)
 
 ---
 

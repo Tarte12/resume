@@ -8,25 +8,34 @@ jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # 릴리즈에 파일을 올리기 위해 권한이 필요합니다.
+      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Typst
         uses: chgl/setup-typst@v1
 
       - name: Build Resume
-        run: typst compile resume.typ Kim_Huisu_Resume.pdf
+        run: |
+          # 빌드 전 YAML 파일 존재 여부 확인
+          ls -R
+          typst compile resume.typ Kim_Huisu_Resume.pdf
 
-      - name: Create or Update Release
-        uses: softprops/action-gh-release@v2
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
         with:
-          tag_name: latest
-          name: Latest Build
-          files: Kim_Huisu_Resume.pdf
-          body: |
-            김희수님의 최신 이력서 PDF 파일입니다.
-            빌드 시각: ${{ github.event.head_commit.timestamp }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          name: resume-pdf
+          path: Kim_Huisu_Resume.pdf
+
+      - name: Release Latest PDF
+        uses: marvinpinto/action-automatic-releases@latest
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: false
+          title: "Latest Build"
+          files: |
+            Kim_Huisu_Resume.pdf

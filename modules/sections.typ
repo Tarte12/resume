@@ -35,8 +35,8 @@
   #grid(
     columns: (1fr, 1fr),
     column-gutter: 8pt,
-    #metric_card("Workflow", summary.workflow, tone: rgb("#2f7d4a")),
-    #metric_card("Technical", summary.technical, tone: rgb("#1b5f8a")),
+    metric_card("Workflow", summary.workflow, tone: rgb("#2f7d4a")),
+    metric_card("Technical", summary.technical, tone: rgb("#1b5f8a")),
   )
 ]
 

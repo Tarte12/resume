@@ -38,7 +38,7 @@
         [#text(size: 8pt, weight: 700, fill: c-accent)[PHONE]], [#text(size: 8.8pt, fill: c-primary)[#resume_data.contacts.phone]],
         [#text(size: 8pt, weight: 700, fill: c-accent)[EMAIL]], [#link("mailto:" + resume_data.contacts.email)[#text(size: 8.8pt, fill: c-primary)[#resume_data.contacts.email]]],
         [#text(size: 8pt, weight: 700, fill: c-accent)[GITHUB]], [#link("https://github.com/" + resume_data.contacts.github)[#text(size: 8.8pt, fill: c-primary)[github.com/#resume_data.contacts.github]]],
-        [#text(size: 8pt, weight: 700, fill: c-accent)[BLOG]], [#link(resume_data.contacts.blog)[#text(size: 8.8pt, fill: c-primary)[velog.io/@emprimula]]],
+        [#text(size: 8pt, weight: 700, fill: c-accent)[BLOG]], [#link(resume_data.contacts.blog)[#text(size: 8.8pt, fill: c-primary)[velog.io/\@emprimula]]],
       )
     ],
   )

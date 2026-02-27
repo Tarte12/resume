@@ -46,17 +46,10 @@
 
 #v(0.55em)
 
-#grid(
-  columns: (1.72fr, 1fr),
-  column-gutter: 10pt,
-  [
-    #render_summary(resume_data.summary)
-    #v(0.45em)
-    #render_projects(resume_data.projects)
-  ],
-  [
-    #render_skills(resume_data.skills)
-    #v(0.45em)
-    #render_education_and_etc(resume_data.education, resume_data.etc)
-  ],
-)
+#render_summary(resume_data.summary)
+#v(0.45em)
+#render_projects(resume_data.projects)
+#v(0.45em)
+#render_skills(resume_data.skills)
+#v(0.45em)
+#render_education_and_etc(resume_data.education, resume_data.etc)

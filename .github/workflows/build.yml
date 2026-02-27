@@ -7,7 +7,7 @@ on:
       - 'resume.yml'
       - 'resume.typ'
       - '.github/workflows/**'
-  workflow_dispatch: # 수동으로도 빌드할 수 있게 버튼을 추가합니다.
+  workflow_dispatch:
 
 jobs:
   build:
@@ -18,13 +18,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Typst
-        uses: lowlighter/setup-typst@v3 # 안정적인 최신 액션으로 교체
+      - name: Install Typst
+        run: |
+          # 최신 Typst 바이너리를 직접 다운로드하여 설치 (가장 확실한 방법)
+          TYPST_VERSION=$(curl -s https://api.github.com/repos/typst/typst/releases/latest | grep -Po '"tag_name": "v\K[^"]*')
+          curl -L -o typst.tar.xz "https://github.com/typst/typst/releases/download/v${TYPST_VERSION}/typst-x86_64-unknown-linux-musl.tar.xz"
+          tar -xf typst.tar.xz
+          sudo mv typst-x86_64-unknown-linux-musl/typst /usr/local/bin/
+          typst --version
 
       - name: Build Resume
-        run: |
-          # 폰트 에러 방지를 위해 기본 컴파일 실행
-          typst compile resume.typ Kim_Huisu_Resume.pdf
+        run: typst compile resume.typ Kim_Huisu_Resume.pdf
 
       - name: Commit PDF
         uses: stefanzweifel/git-auto-commit-action@v5

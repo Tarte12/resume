@@ -1,0 +1,34 @@
+# 이력서 데이터 (RanolP님 방식의 데이터 중심 관리)
+name: Kim Huisu (김희수)
+tagline: "AI를 도구로 지휘하며 실무 병목을 해결하는 Junior Backend Developer"
+keywords: ["Java", "Spring Boot", "JPA", "TDD", "AI Workflow", "MySQL", "AWS"]
+
+contacts:
+  phone: "010-8894-8093"
+  email: "huisukim9905@gmail.com"
+  github: "Tarte12"
+  blog: "https://velog.io/@emprimula/posts"
+
+summary:
+  workflow: "‘1PR = 1 Feature’ 원칙 및 AI 기반 PR 세분화로 2.5주 일정 지연을 1주 이내로 정상화"
+  technical: "ModelMapper 제거 후 정적 팩토리 메서드 도입으로 결함 차단 및 데이터 정규화로 확장성 확보"
+
+projects:
+  - name: "Cohi-Chat"
+    description: "개발자를 위한 커피챗 예약 서비스"
+    period: "2026.01 ~ Present"
+    role: "BE/FE, Member 도메인 및 보안 인프라 설계"
+    highlights:
+      - "FastAPI -> Spring Boot 마이그레이션 및 계층형 아키텍처 재구성"
+      - "데이터 정규화 테이블 분리를 통한 조회 효율성 개선"
+      - "TDD 도입 및 유스케이스 기반 테스트 전략 표준화"
+    stack: ["Java 21", "Spring Boot 3.5", "JPA", "SQLite", "Redis", "Docker"]
+
+education:
+  - school: "한신대학교"
+    major: "컴퓨터공학부 학사"
+    period: "2019.03 ~ 2025.02"
+
+etc:
+  - title: "SQLD (SQL 개발자)"
+    date: "2024.12"

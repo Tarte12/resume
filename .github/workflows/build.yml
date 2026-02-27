@@ -7,6 +7,7 @@ on:
       - 'resume.yml'
       - 'resume.typ'
       - '.github/workflows/**'
+  workflow_dispatch: # 수동으로도 빌드할 수 있게 버튼을 추가합니다.
 
 jobs:
   build:
@@ -18,10 +19,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Typst
-        uses: chgl/setup-typst@v1
+        uses: lowlighter/setup-typst@v3 # 안정적인 최신 액션으로 교체
 
       - name: Build Resume
-        run: typst compile resume.typ Kim_Huisu_Resume.pdf
+        run: |
+          # 폰트 에러 방지를 위해 기본 컴파일 실행
+          typst compile resume.typ Kim_Huisu_Resume.pdf
 
       - name: Commit PDF
         uses: stefanzweifel/git-auto-commit-action@v5

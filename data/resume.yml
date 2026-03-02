@@ -20,10 +20,13 @@ projects:
     role: "BE / Member 도메인 및 보안 인프라 설계"
     overview: "FastAPI → Spring Boot 마이그레이션 및 TDD·자동화·AI 협업을 결합한 공정 효율화 프로세스 구축"
     highlights:
-      - "테이블 분리를 통한 정규화 수행, 표준 JPQL JOIN 한 번으로 시간·요일을 동시 검증하도록 개선"
-      - "[품질 관리] TDD 도입 및 유스케이스 기반 테스트 전략 표준화 (Git Wiki 문서화)"
-      - "[품질 관리] 팀 컨벤션 도입 및 Lint 자동화로 컴파일 단계 컨벤션 강제, 설계 중심 리뷰 환경 조성"
-      - "[품질 관리] 테스트 객체 생성 코드 비대에 따른 리뷰 효율 저하를 데이터 상수화 및 given절 추상화로 해결"
+      - "[보안] OAuth 2.0 소셜 로그인 구현 (Google, Kakao)"
+      - "[보안] RT Rotation 도입 — 토큰 재사용 감지 및 세션 무효화, Redis Blacklist로 AT 즉시 무효화"
+      - "[보안] Refresh Token API Rate Limiting 적용 및 보안 취약점 수정"
+      - "[설계] 공통 응답 구조 ApiResponseDTO 도입, 테스트 객체 데이터 상수화·given절 추상화로 리뷰 효율 개선"
+      - "[설계] TimeSlot weekdays 정규화 테이블 분리, JPQL JOIN 한 번으로 시간·요일 동시 검증"
+      - "[FE] @dnd-kit 기반 타임슬롯 드래그 앤 드롭 UI 구현 및 겹침 방지 로직 분리"
+      - "[품질] TDD 도입 및 Lint 자동화로 컴파일 단계 컨벤션 강제, 유스케이스 기반 테스트 전략 Wiki 문서화"
     stack: ["Java 21", "Spring Boot 3.5", "Spring Security", "JPA/Hibernate", "Redis", "PostgreSQL", "Docker", "GitHub Actions", "JUnit5"]
 
 skills:

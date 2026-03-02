@@ -1,5 +1,7 @@
 # 이력서 데이터
-name: Kim Huisu (김희수)
+name: "Kim Huisu (김희수)"
+name_kr: "김희수"
+name_en: "Kim Huisu"
 tagline: "Spring Boot 기반 인증/보안/API 설계를 주도한 Junior Backend Developer"
 keywords: ["Java", "Spring Boot", "Spring Security", "JPA", "Redis", "OAuth2", "JWT", "MySQL"]
 

@@ -11,17 +11,17 @@ contacts:
   blog: "https://velog.io/@emprimula/posts"
 
 Introduce: |
-  *"AI를 도구로 활용해, 데이터와 인증 구조를 설계하며 개발 공정을 지휘합니다."*
+  "AI를 도구로 활용해, 데이터와 인증 구조를 설계하며 개발 공정을 지휘합니다."
 
-  *Workflow: 공정 효율화*
-  - ‘1PR = 1 Feature’ 원칙을 적용해 변경 영향 범위를 축소하고 병합 흐름을 안정화
-  - AI 기반 리뷰 루프를 활용해 반복 검증 작업을 보조하고 개발 공정의 가시성을 확보
+  == Workflow: 공정 효율화
+  - *‘1PR = 1 Feature’* 원칙을 적용해 변경 영향 범위를 축소하고 병합 흐름을 안정화
+  - *AI 기반 리뷰 루프*를 활용해 반복 검증 작업을 보조하고 개발 공정의 가시성을 확보
 
-  *Technical Solution: 문제 해결 및 설계*
-  - 비정규화된 JSON 구조를 정규화된 테이블 구조로 전환해 조건 조회가 가능한 데이터 모델 설계
-  - OAuth 외부 호출과 내부 트랜잭션 경계를 분리해 인증 흐름의 안정성 확보
-  - Redis 기반 Refresh Token Rotation 및 Access Token Blacklist 전략 도입
-  - ModelMapper 대신 도메인 내부 정적 팩토리 메서드를 도입해 객체 생성 책임을 구조 내부로 이동
+  == Technical Solution: 문제 해결 및 설계
+  - *비정규화된 JSON 구조*를 정규화된 테이블 구조로 전환해 조건 조회가 가능한 데이터 모델 설계
+  - *OAuth 외부 호출*과 *내부 트랜잭션 경계*를 분리해 인증 흐름의 안정성 확보
+  - *Redis 기반 Refresh Token Rotation* 및 *Access Token Blacklist* 전략 도입
+  - *ModelMapper 대신 도메인 내부 정적 팩토리 메서드*를 도입해 객체 생성 책임을 구조 내부로 이동
 
   *AI를 활용해, 공정과 구조를 함께 설계합니다.*
 

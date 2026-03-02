@@ -100,7 +100,20 @@
     inset: (x: 11pt, y: 9pt),
     width: 100%,
   )[
-    #set par(leading: 0.74em, spacing: 0.28em, justify: false)
+    #show heading.where(level: 2): it => block(
+      above: 0.5em,
+      below: 0.16em,
+      fill: c-surface-strong,
+      stroke: (left: 1.8pt + c-accent, rest: 0.5pt + c-line),
+      radius: 5pt,
+      inset: (x: 7pt, y: 4.1pt),
+      width: 100%,
+    )[
+      #text(size: 7.95pt, weight: 840, fill: c-accent, tracking: 0.3pt)[#it.body]
+    ]
+    #show strong: it => text(weight: 760, fill: c-primary)[#it.body]
+    #set list(marker: [•], indent: 1.05em, body-indent: 0.55em, tight: true)
+    #set par(leading: 0.74em, spacing: 0.22em, justify: false)
     #text(size: 9.1pt, fill: c-primary)[#eval(introduce, mode: "markup")]
   ]
 ]

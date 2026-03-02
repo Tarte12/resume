@@ -11,19 +11,19 @@ contacts:
   blog: "https://velog.io/@emprimula/posts"
 
 Introduce: |
-  *안정적인 인증 구조와 데이터 설계로, 제품이 오래 버티는 백엔드를 만듭니다.*
+  *"AI를 도구로 활용해, 데이터와 인증 구조를 설계하며 개발 공정을 지휘합니다."*
 
-  *Workflow Optimization*
-  - *1 PR = 1 Feature* 원칙으로 변경 범위를 좁혀 리뷰와 배포 흐름을 안정화했습니다.
-  - AI 리뷰 루프를 활용해 반복 검증 부담을 줄이고, 품질 확인 속도를 높였습니다.
-  - 기능 단위 작업 기준을 지켜 병합 충돌과 회귀 리스크를 줄였습니다.
+  *Workflow: 공정 효율화*
+  - ‘1PR = 1 Feature’ 원칙을 적용해 변경 영향 범위를 축소하고 병합 흐름을 안정화
+  - AI 기반 리뷰 루프를 활용해 반복 검증 작업을 보조하고 개발 공정의 가시성을 확보
 
-  *Technical Architecture*
-  - 비정규화 JSON 구조를 정규화 모델로 전환해 조건 조회 성능과 유지보수성을 개선했습니다.
-  - OAuth 외부 연동과 내부 트랜잭션 경계를 분리해 인증 흐름의 안정성을 높였습니다.
-  - Redis 기반 Refresh Token Rotation + Access Token Blacklist를 적용해 보안 대응력을 강화했습니다.
+  *Technical Solution: 문제 해결 및 설계*
+  - 비정규화된 JSON 구조를 정규화된 테이블 구조로 전환해 조건 조회가 가능한 데이터 모델 설계
+  - OAuth 외부 호출과 내부 트랜잭션 경계를 분리해 인증 흐름의 안정성 확보
+  - Redis 기반 Refresh Token Rotation 및 Access Token Blacklist 전략 도입
+  - ModelMapper 대신 도메인 내부 정적 팩토리 메서드를 도입해 객체 생성 책임을 구조 내부로 이동
 
-  *공정 개선과 기술 설계를 함께 다루며, 팀이 꾸준히 빠르게 개발할 수 있는 기반을 만듭니다.*
+  *AI를 활용해, 공정과 구조를 함께 설계합니다.*
 
 projects:
   - name: "Cohi-Chat"

@@ -100,7 +100,7 @@
     inset: (x: 11pt, y: 9pt),
     width: 100%,
   )[
-    #set par(leading: 0.74em, spacing: 0.35em, justify: false)
+    #set par(leading: 0.74em, spacing: 0.28em, justify: false)
     #text(size: 9.1pt, fill: c-primary)[#eval(introduce, mode: "markup")]
   ]
 ]

@@ -123,9 +123,9 @@
       columns: (auto, 1fr),
       column-gutter: 8pt,
       text(size: 9pt, weight: 700, fill: c-accent)[#project.role],
-      if "team" in project [
-        #text(size: 8.5pt, fill: c-muted)[/ #project.team]
-      ],
+      if "team" in project {
+        text(size: 8.5pt, fill: c-muted)["/ " + project.team]
+      },
     )
     #v(0.35em)
     // 개요

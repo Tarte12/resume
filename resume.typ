@@ -1,5 +1,5 @@
 #import "metadata.typ": resume_data
-#import "modules/sections.typ": render_summary, render_projects, render_skills, render_education, render_etc
+#import "modules/sections.typ": render_summary, render_projects, render_skills, render_education_certs
 
 #let c-primary = rgb("#2d3436")
 #let c-accent  = rgb("#0984e3")
@@ -20,21 +20,17 @@
 
 // ─── Header ───────────────────────────────────────────────────────────────────
 #align(center)[
-  // Name: 큰 한국어 + 작은 영어
   #text(size: 27pt, weight: 900, fill: c-primary)[#resume_data.name_kr]
   #h(0.5em)
   #text(size: 15pt, weight: 400, fill: c-muted)[#resume_data.name_en]
 
-  #v(0.55em)
-
-  // 한 줄 역할 소개
+  #v(0.4em)
   #text(size: 10.5pt, weight: 600, fill: c-accent)[#resume_data.tagline]
 
   #v(0.75em)
   #line(length: 65%, stroke: 0.5pt + c-line)
   #v(0.55em)
 
-  // 연락처
   #set text(size: 8.5pt, fill: c-muted)
   #grid(
     columns: (auto, auto, auto, auto),
@@ -54,6 +50,4 @@
 #v(0.5em)
 #render_skills(resume_data.skills)
 #v(0.5em)
-#render_education(resume_data.education)
-#v(0.5em)
-#render_etc(resume_data.etc)
+#render_education_certs(resume_data.education, resume_data.certifications)

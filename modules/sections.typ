@@ -14,15 +14,15 @@
   "JPA/Hibernate":           rgb("#59666C"),
   "JPA":                     rgb("#59666C"),
   "Redis":                   rgb("#DC382D"),
-  "Redis Blacklist":         rgb("#DC382D"),
   "PostgreSQL":              rgb("#336791"),
   "MySQL":                   rgb("#4479A1"),
   "SQLite":                  rgb("#003B57"),
+  "DBMS/RDBMS":              rgb("#336791"),
   "Docker":                  rgb("#2496ED"),
   "GitHub Actions":          rgb("#2088FF"),
   "JWT":                     rgb("#e17055"),
   "OAuth2":                  rgb("#4285F4"),
-  "Bucket4j Rate Limiting":  rgb("#9b59b6"),
+  "AWS":                     rgb("#FF9900"),
   "TDD":                     rgb("#00b894"),
   "JUnit5":                  rgb("#25A162"),
   "Claude Code":             rgb("#7c3aed"),
@@ -34,7 +34,7 @@
   else { c-accent }
 }
 
-// ─── Section Header: "한국어  English  ──────────────────────────────────" ────
+// ─── Section Header ───────────────────────────────────────────────────────────
 #let section_title(kr, en) = [
   #v(1.2em)
   #grid(
@@ -68,10 +68,7 @@
     inset:  (x: 10pt, y: 9pt),
     width:  100%,
   )[
-    #set par(leading: 0.7em)
-    #text(size: 9.5pt, fill: c-primary)[• #summary.workflow] \
-    #v(0.2em)
-    #text(size: 9.5pt, fill: c-primary)[• #summary.technical]
+    #text(size: 10pt, fill: c-primary)[#summary]
   ]
 ]
 
@@ -79,6 +76,7 @@
 #let render_projects(projects) = [
   #section_title("프로젝트", "Projects")
   #for project in projects [
+    // 프로젝트명 + 기간
     #grid(
       columns: (1fr, auto),
       align: (left + top, right + top),
@@ -90,8 +88,22 @@
       text(size: 8.5pt, weight: 600, fill: c-muted)[#project.period],
     )
     #v(0.15em)
-    #text(size: 9pt, weight: 700, fill: c-accent)[#project.role]
+    // 역할 + 팀 구성
+    #grid(
+      columns: (auto, 1fr),
+      column-gutter: 8pt,
+      text(size: 9pt, weight: 700, fill: c-accent)[#project.role],
+      if "team" in project [
+        #text(size: 8.5pt, fill: c-muted)[/ #project.team]
+      ],
+    )
     #v(0.35em)
+    // 개요
+    #if "overview" in project [
+      #text(size: 9pt, fill: c-muted, style: "italic")[#project.overview]
+      #v(0.3em)
+    ]
+    // 하이라이트
     #block[
       #set par(leading: 0.6em, spacing: 0.55em)
       #for h in project.highlights [
@@ -99,6 +111,7 @@
       ]
     ]
     #v(0.5em)
+    // 기술 뱃지
     #for s in project.stack [#tech-badge(s)#h(3pt)]
     #v(1.4em)
   ]
@@ -112,23 +125,20 @@
     row-gutter: 0.9em,
     column-gutter: 10pt,
     align: (left + top, left + top),
-    text(size: 8.5pt, weight: 800, fill: c-muted)[Language/Framework],
-    [#for s in skills.language_framework.split(", ") [#badge(s, color: rgb("#6db33f"))#h(3pt)]],
+    text(size: 8.5pt, weight: 800, fill: c-muted)[Backend],
+    [#for s in skills.backend.split(", ") [#badge(s, color: rgb("#6db33f"))#h(3pt)]],
 
     text(size: 8.5pt, weight: 800, fill: c-muted)[Database],
-    [#for s in skills.data.split(", ") [#badge(s, color: rgb("#336791"))#h(3pt)]],
+    [#for s in skills.database.split(", ") [#badge(s, color: rgb("#336791"))#h(3pt)]],
 
-    text(size: 8.5pt, weight: 800, fill: c-muted)[Security/Auth],
-    [#for s in skills.security_auth.split(", ") [#badge(s, color: rgb("#e17055"))#h(3pt)]],
-
-    text(size: 8.5pt, weight: 800, fill: c-muted)[Infra/Quality],
-    [#for s in skills.infra_quality.split(", ") [#badge(s, color: rgb("#2496ED"))#h(3pt)]],
+    text(size: 8.5pt, weight: 800, fill: c-muted)[Cloud],
+    [#for s in skills.cloud.split(", ") [#badge(s, color: rgb("#FF9900"))#h(3pt)]],
   )
 ]
 
-// ─── Education ────────────────────────────────────────────────────────────────
-#let render_education(education) = [
-  #section_title("학력", "Education")
+// ─── Education & Certifications (합쳐진 섹션) ────────────────────────────────
+#let render_education_certs(education, certifications) = [
+  #section_title("학력 및 자격증", "Education & Certifications")
   #for edu in education [
     #grid(
       columns: (1fr, auto),
@@ -142,18 +152,16 @@
     )
     #v(0.5em)
   ]
-]
-
-// ─── Etc ──────────────────────────────────────────────────────────────────────
-#let render_etc(etc) = [
-  #section_title("기타 활동 및 자격", "Etc")
-  #for item in etc [
+  #v(0.2em)
+  #text(size: 8.5pt, weight: 800, fill: c-muted)[Certifications]
+  #v(0.4em)
+  #for cert in certifications [
     #grid(
       columns: (1fr, auto),
       align: (left + top, right + top),
-      text(size: 9.5pt, fill: c-primary)[• #item.title],
-      text(size: 8.5pt, fill: c-muted)[#item.date],
+      text(size: 9.5pt, fill: c-primary)[• #cert.title],
+      text(size: 8.5pt, fill: c-muted)[#cert.date],
     )
-    #v(0.4em)
+    #v(0.3em)
   ]
 ]

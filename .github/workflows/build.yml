@@ -4,10 +4,7 @@ on:
     branches:
       - main
     paths:
-      - 'data/**'
-      - 'modules/**'
-      - 'metadata.typ'
-      - 'resume.typ'
+      - 'src/**'
       - '.github/workflows/**'
   workflow_dispatch:
 
@@ -39,7 +36,7 @@ jobs:
           cp -r public/static/*.otf fonts/
 
       - name: Build Resume
-        run: typst compile --font-path fonts --font-path /usr/share/fonts resume.typ Kim_Huisu_Resume.pdf
+        run: typst compile --font-path fonts --font-path /usr/share/fonts src/resume.typ Kim_Huisu_Resume.pdf
 
       - name: Commit PDF
         uses: stefanzweifel/git-auto-commit-action@v5

@@ -1,5 +1,5 @@
 #import "metadata.typ": resume_data
-#import "modules/sections.typ": render_summary, render_projects, render_skills, render_education_certs
+#import "modules/sections.typ": render_introduce, render_projects, render_skills, render_education_certs
 
 #let c-primary = rgb("#2d3436")
 #let c-accent  = rgb("#0984e3")
@@ -44,7 +44,7 @@
 ]
 
 #v(1.0em)
-#render_summary(resume_data.summary)
+#render_introduce(resume_data.Introduce)
 #v(0.5em)
 #render_projects(resume_data.projects)
 #v(0.5em)

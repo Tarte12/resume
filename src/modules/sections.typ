@@ -88,9 +88,9 @@
   }
 }
 
-// ─── Summary ──────────────────────────────────────────────────────────────────
-#let render_summary(summary) = [
-  #section_title("핵심 요약", "Summary")
+// ─── Introduce ────────────────────────────────────────────────────────────────
+#let render_introduce(introduce) = [
+  #section_title("자기소개", "Introduce")
   #block(
     fill:   c-accent.lighten(95%),
     stroke: (left: 3pt + c-accent),
@@ -98,7 +98,8 @@
     inset:  (x: 10pt, y: 9pt),
     width:  100%,
   )[
-    #text(size: 10pt, fill: c-primary)[#summary]
+    #set par(leading: 0.65em)
+    #text(size: 9.5pt, fill: c-primary)[#introduce]
   ]
 ]
 

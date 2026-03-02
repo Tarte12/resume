@@ -75,6 +75,23 @@
 typst compile src/resume.typ Kim_Huisu_Resume.pdf
 ```
 
+### **수동 수정 가이드**
+
+이력서 내용을 직접 수정하려면 아래 파일을 기준으로 작업하면 됩니다.
+
+- `src/data/resume.yml`
+  - 소개(Introduce), 프로젝트(Project), 스킬(Skills), 학력/자격증(Education/Certifications) 텍스트
+- `src/modules/sections.typ`
+  - 섹션 제목명(`Introduce`, `Project` 등), 줄 간격, 불릿 스타일, 섹션 렌더링 규칙
+- `src/resume.typ`
+  - 상단 헤더(이름/연락처), 전체 페이지 여백, 기본 폰트/본문 크기
+
+수정 후 PDF 확인:
+
+```bash
+typst compile src/resume.typ Kim_Huisu_Resume.pdf
+```
+
 ---
 
 > 이 이력서는 **Typst**로 작성되었으며, GitHub Actions를 통해 소스 수정 시 자동으로 PDF가 빌드됩니다.

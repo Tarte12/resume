@@ -87,7 +87,7 @@
 }
 
 #let render_introduce(introduce) = [
-  #section_title("Summary")
+  #section_title("Introduce")
   #show heading.where(level: 2): it => block(above: 0.58em, below: 0.24em)[
     #text(size: 8.25pt, weight: 760, fill: c-primary)[#it.body]
   ]
@@ -99,7 +99,7 @@
 ]
 
 #let render_projects(projects) = [
-  #section_title("Experience")
+  #section_title("Project")
   #for (idx, project) in projects.enumerate() [
     #grid(
       columns: (1fr, auto),

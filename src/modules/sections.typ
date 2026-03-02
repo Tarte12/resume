@@ -92,14 +92,16 @@
 #let render_introduce(introduce) = [
   #section_title("자기소개", "Introduce")
   #block(
-    fill:   c-accent.lighten(95%),
-    stroke: (left: 3pt + c-accent),
-    radius: (right: 4pt),
-    inset:  (x: 10pt, y: 9pt),
+    fill:   c-accent.lighten(97%),
+    stroke: (left: 2.5pt + c-accent.lighten(30%)),
+    radius: (right: 6pt),
+    inset:  (x: 12pt, y: 11pt),
     width:  100%,
   )[
-    #set par(leading: 0.65em)
-    #text(size: 9.5pt, fill: c-primary)[#introduce]
+    #set par(leading: 0.75em, justify: true)
+    #text(size: 9.5pt, fill: c-primary)[
+      #eval(introduce, mode: "markup")
+    ]
   ]
 ]
 

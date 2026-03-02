@@ -31,15 +31,13 @@ projects:
     period: "2026.01 ~ Present"
     team: "팀 프로젝트 (2인)"
     role: "Backend Infrastructure & Security Lead"
-    overview: "FastAPI에서 Spring Boot로의 마이그레이션을 주도하며, TDD와 AI 워크플로우를 결합하여 개발 공정을 최적화했습니다."
+    overview: "FastAPI에서 Spring Boot로의 마이그레이션을 주도하며, 보안 아키텍처 고도화와 데이터 정규화를 통해 시스템의 지속 가능성을 확보했습니다."
     highlights:
-      - "[보안] JWT 인증 체계 구축 및 OAuth 2.0(Google, Kakao) 소셜 로그인 통합"
-      - "[보안] Refresh Token Rotation(RTR) 및 Redis 블랙리스트 기반 세션 무효화로 보안 취약점 보완"
-      - "[보안] Bucket4j 기반 Rate Limiting 적용을 통한 무차별 대입 공격(Brute-force) 방어"
-      - "[설계] ApiResponseDTO 및 전역 예외 처리를 통한 API 표준화로 협업 생산성 40% 향상"
-      - "[설계] TimeSlot 요일 데이터 정규화 및 JPQL 최적화를 통해 복합 조건 조회 성능 개선"
-      - "[품질] TDD 기반 유스케이스 검증 및 GitHub Actions 기반의 테스트/린트 자동화 파이프라인 구축"
-      - "[AI] Claude Code 기반의 다중 리뷰 프로세스를 구축하여 2.5주의 일정 지연을 1주 이내로 정상화"
+      - "[설계] 인증/Member 도메인 아키텍처 개선: 기능 단위(features/member)로 경계를 재정의하여 결합도를 낮추고, Provider API 수동 연동 및 트랜잭션 경계 분리로 Stateless 인증 흐름의 안정성 확보"
+      - "[데이터] 데이터 정규화를 통한 조회 구조 최적화: SQLite json_each 의존성을 제거하고 테이블 분리 및 JPQL JOIN 설계를 도입하여 시간/요일 복합 조건 조회 성능 개선 및 Instant(UTC) 기반 시간 표준화 적용"
+      - "[보안] 인증 보안 체계 고도화: Redis 기반 SHA-256 해시 토큰 저장소 구축, 로그아웃 시 AT Blacklist 즉시 차단 필터 구성, 그리고 사용자 식별자 기반의 Rate Limit 재설계로 보안 취약점 원천 차단"
+      - "[설계] API 계약 표준화 및 품질 검증: 공통 Envelope 도입으로 응답 포맷을 통일하고, 컨트롤러 계약 테스트(Contract Test)를 강화하여 스키마 불일치 회귀 결함을 조기에 탐지하도록 체계 구축"
+      - "[공정] 개발 공정 및 품질 관리 표준화: 1PR=1Feature 원칙 준수와 AI 리뷰 루프(Claude/CodeRabbit) 연동으로 리뷰 효율을 극대화하고, UI와 비즈니스 로직의 엄격한 분리를 통해 유지보수성 향상"
     stack: ["Java 21", "Spring Boot 3.5", "Spring Security", "JPA/Hibernate", "Redis", "PostgreSQL", "Docker", "GitHub Actions", "JUnit5"]
 
 skills:

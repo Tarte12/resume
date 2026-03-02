@@ -88,13 +88,13 @@
 
 #let render_introduce(introduce) = [
   #section_title("Summary")
-  #show heading.where(level: 2): it => block(above: 0.34em, below: 0.08em)[
+  #show heading.where(level: 2): it => block(above: 0.46em, below: 0.18em)[
     #text(size: 8.25pt, weight: 760, fill: c-primary)[#it.body]
   ]
-  #show strong: it => text(weight: 760, fill: c-primary)[#it.body]
-  #set list(marker: [-], indent: 1.02em, body-indent: 0.52em, tight: true)
-  #set par(leading: 0.73em, spacing: 0.2em, justify: false)
-  #text(size: 8.45pt, fill: c-primary)[#eval(introduce, mode: "markup")]
+  #show strong: it => text(weight: 710, fill: c-primary)[#it.body]
+  #set list(marker: [-], indent: 1.06em, body-indent: 0.56em, tight: false)
+  #set par(leading: 0.84em, spacing: 0.28em, justify: false)
+  #text(size: 8.5pt, fill: c-primary)[#eval(introduce, mode: "markup")]
 ]
 
 #let render_projects(projects) = [

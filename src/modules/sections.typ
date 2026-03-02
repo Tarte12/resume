@@ -60,7 +60,7 @@
     column-gutter: 7pt,
     align: (left + bottom, left + bottom, left + bottom),
     text(size: 11.2pt, weight: 850, fill: c-primary)[#kr],
-    text(size: 7.4pt, weight: 700, fill: c-muted)[#en.upper()],
+    text(size: 7.4pt, weight: 700, fill: c-muted)[#en],
     box(height: 1.2pt, width: 100%, fill: c-line),
   )
   #v(0.45em)

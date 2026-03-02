@@ -60,10 +60,10 @@
         column-gutter: 4pt,
         row-gutter: 4pt,
         align: (right + top, right + top),
-        #contact-chip("EMAIL", resume_data.contacts.email, url: "mailto:" + resume_data.contacts.email),
-        #contact-chip("PHONE", resume_data.contacts.phone),
-        #contact-chip("GITHUB", "github.com/" + resume_data.contacts.github, url: "https://github.com/" + resume_data.contacts.github),
-        #contact-chip("BLOG", "velog.io/@emprimula", url: resume_data.contacts.blog),
+        contact-chip("EMAIL", resume_data.contacts.email, url: "mailto:" + resume_data.contacts.email),
+        contact-chip("PHONE", resume_data.contacts.phone),
+        contact-chip("GITHUB", "github.com/" + resume_data.contacts.github, url: "https://github.com/" + resume_data.contacts.github),
+        contact-chip("BLOG", "velog.io/@emprimula", url: resume_data.contacts.blog),
       )
     ],
   )

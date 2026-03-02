@@ -4,6 +4,36 @@
 #let c-muted   = rgb("#636e72")
 #let c-line    = rgb("#dfe6e9")
 
+// ─── Highlight Tag Colors ─────────────────────────────────────────────────────
+#let tag-colors = (
+  "보안": rgb("#e74c3c"),
+  "설계": rgb("#0984e3"),
+  "FE":   rgb("#f39c12"),
+  "품질": rgb("#00b894"),
+)
+
+#let render-highlight-item(h) = {
+  if h.starts-with("[") {
+    let parts = h.slice(1).split("] ")
+    if parts.len() >= 2 {
+      let tag   = parts.at(0)
+      let rest  = parts.slice(1).join("] ")
+      let color = if tag in tag-colors { tag-colors.at(tag) } else { c-accent }
+      grid(
+        columns: (auto, 1fr),
+        column-gutter: 6pt,
+        align: (left + top, left + top),
+        badge(tag, color: color),
+        text(size: 9pt, fill: c-primary)[#rest],
+      )
+    } else {
+      text(size: 9pt, fill: c-primary)[• #h]
+    }
+  } else {
+    text(size: 9pt, fill: c-primary)[• #h]
+  }
+}
+
 // ─── Tech Brand Colors ────────────────────────────────────────────────────────
 #let tech-colors = (
   "Java 21":                 rgb("#e74c3c"),
@@ -105,9 +135,9 @@
     ]
     // 하이라이트
     #block[
-      #set par(leading: 0.6em, spacing: 0.55em)
+      #set par(leading: 0.6em, spacing: 0.7em)
       #for h in project.highlights [
-        #text(size: 9pt, fill: c-primary)[• #h]
+        #render-highlight-item(h)
       ]
     ]
     #v(0.5em)

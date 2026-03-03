@@ -63,7 +63,7 @@
 
 #let render-highlight-group(h, idx) = {
   let color = if h.tag in tag-colors { tag-colors.at(h.tag) } else { c-accent }
-  v(0.2em)
+  v(0.3em)
   grid(
     columns: (auto, 1fr),
     column-gutter: 5pt,
@@ -71,16 +71,18 @@
     chip(h.tag, color: color, size: 6.5pt),
     text(size: 8.3pt, weight: 760, fill: c-primary)[#str(idx + 1). #h.title],
   )
-  v(0.1em)
+  v(0.16em)
   for item in h.items {
     grid(
       columns: (8pt, 1fr),
       column-gutter: 4pt,
       align: (left + top, left + top),
       text(size: 8pt, fill: c-muted)[-],
-      text(size: 8.1pt, fill: c-primary)[#eval(item, mode: "markup")],
+      [#set text(size: 8.1pt, fill: c-primary)
+       #set par(leading: 0.82em, justify: false)
+       #eval(item, mode: "markup")],
     )
-    v(0.07em)
+    v(0.22em)
   }
 }
 
@@ -119,7 +121,6 @@
     #v(0.18em)
     #for s in project.stack [#chip(s, color: get-tech-color(s))#h(2pt)]
 
-    #set par(spacing: 0.16em)
     #for (hidx, h) in project.highlights.enumerate() [#render-highlight-group(h, hidx)]
 
     #if idx < projects.len() - 1 [

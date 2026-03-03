@@ -67,8 +67,8 @@ projects:
     stack: ["Java 21", "Spring Boot 3.5", "Spring Security", "JPA/Hibernate", "Redis", "PostgreSQL", "Docker", "GitHub Actions", "JUnit5"]
 
 skills:
-  backend: "Java 21, Spring Boot, Spring Security, JPA/Hibernate"
-  database: "PostgreSQL, MySQL, Redis, SQLD"
+  backend: "Java, Spring Boot, JPA/Hibernate"
+  database: "PostgreSQL, MySQL, Redis, SQLite"
   cloud: "AWS (EC2, S3), GitHub Actions, Docker"
 
 education:

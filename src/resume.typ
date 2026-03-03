@@ -22,7 +22,7 @@
   size: 9.9pt,
   fill: c-primary,
 )
-#set par(leading: 0.78em)
+#set par(leading: 0.86em)
 
 #align(center)[
   #text(size: 17.8pt, weight: 820, fill: c-primary)[#resume_data.name_kr]
@@ -47,9 +47,9 @@
 #v(0.08em)
 
 #render_introduce(resume_data.Introduce)
-#v(0.03em)
+#v(0.05em)
 #render_skills(resume_data.skills)
-#v(0.03em)
+#v(0.05em)
 #render_projects(resume_data.projects)
-#v(0.03em)
+#v(0.05em)
 #render_education_certs(resume_data.education, resume_data.certifications)

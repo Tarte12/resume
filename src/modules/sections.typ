@@ -72,7 +72,7 @@
     chip(h.tag, color: color, size: 7.5pt),
     text(size: 10.1pt, weight: 740, fill: c-primary)[#str(idx + 1). #h.title],
   )
-  v(0.08em)
+  v(0.1em)
   for item in h.items {
     grid(
       columns: (8.5pt, 1fr),
@@ -82,11 +82,11 @@
       [
         #show strong: it => it.body
         #set text(size: 9.4pt, fill: c-primary)
-        #set par(leading: 0.9em, spacing: 0.34em, justify: false)
+        #set par(leading: 1.0em, spacing: 0.46em, justify: false)
         #eval(item, mode: "markup")
       ],
     )
-    v(0.1em)
+    v(0.14em)
   }
 }
 
@@ -96,9 +96,9 @@
     #text(size: 10pt, weight: 740, fill: c-accent)[#it.body]
   ]
   #show strong: it => it.body
-  #show list.item: it => block(below: 0.46em)[#it]
+  #show list.item: it => block(below: 0.62em)[#it]
   #set list(marker: [•], indent: 1.05em, body-indent: 0.52em, tight: false)
-  #set par(leading: 0.92em, spacing: 0.56em, justify: false)
+  #set par(leading: 1.08em, spacing: 0.72em, justify: false)
   #text(size: 9.5pt, fill: c-primary)[#eval(introduce, mode: "markup")]
 ]
 
@@ -112,25 +112,25 @@
       text(size: 10.6pt, weight: 760, fill: c-primary)[#project.name],
       text(size: 8.4pt, fill: c-muted)[#project.period],
     )
-    #v(0.04em)
+    #v(0.07em)
     #text(size: 8.7pt, weight: 650, fill: c-muted)[
       #project.role#(if "team" in project { "  |  " + project.team } else { "" })
     ]
 
     #if "overview" in project [
-      #v(0.08em)
+      #v(0.12em)
       #text(size: 9.3pt, fill: c-muted)[#project.overview]
     ]
 
-    #v(0.1em)
+    #v(0.14em)
     #for s in project.stack [#chip(s, color: get-tech-color(s))#h(2.2pt)]
 
     #for (hidx, h) in project.highlights.enumerate() [#render-highlight-group(h, hidx)]
 
     #if idx < projects.len() - 1 [
-      #v(0.2em)
+      #v(0.24em)
       #line(length: 100%, stroke: 0.5pt + c-line)
-      #v(0.14em)
+      #v(0.2em)
     ]
   ]
 ]
@@ -140,7 +140,7 @@
   #grid(
     columns: (78pt, 1fr),
     column-gutter: 8pt,
-    row-gutter: 0.42em,
+    row-gutter: 0.56em,
     align: (left + top, left + top),
     text(size: 8.7pt, weight: 720, fill: c-muted)[Backend],
     [#for s in skills.backend.split(", ") [#chip(s, color: rgb("#16a34a"))#h(2pt)]],
@@ -165,7 +165,7 @@
       ],
       text(size: 8.4pt, fill: c-muted)[#edu.period],
     )
-    #if idx < education.len() - 1 [#v(0.1em)]
+    #if idx < education.len() - 1 [#v(0.18em)]
   ]
 
   #if certifications.len() > 0 [
@@ -177,6 +177,7 @@
         text(size: 9.3pt, fill: c-primary)[• #cert.title],
         text(size: 8.4pt, fill: c-muted)[#cert.date],
       )
+      #v(0.12em)
     ]
   ]
 ]

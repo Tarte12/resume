@@ -13,20 +13,20 @@
 #set text(
   font: ("Pretendard", "Noto Sans CJK KR", "Malgun Gothic", "Arial"),
   fallback: true,
-  size: 9.4pt,
+  size: 10pt,
   fill: c-primary,
 )
 #set par(leading: 0.72em)
 
 #align(center)[
-  #text(size: 16.5pt, weight: 860, fill: c-primary)[#resume_data.name_kr]
+  #text(size: 17pt, weight: 860, fill: c-primary)[#resume_data.name_kr]
   #v(0.06em)
-  #text(size: 8.9pt, fill: c-muted)[#resume_data.name_en]
+  #text(size: 9.4pt, fill: c-muted)[#resume_data.name_en]
   #v(0.12em)
-  #text(size: 8.8pt, weight: 620, fill: c-muted)[#resume_data.tagline]
+  #text(size: 9.2pt, weight: 620, fill: c-muted)[#resume_data.tagline]
 
   #v(0.26em)
-  #set text(size: 7.8pt, fill: c-accent)
+  #set text(size: 8.2pt, fill: c-accent)
   #link("mailto:" + resume_data.contacts.email)[#resume_data.contacts.email]
   #text(fill: c-muted)[  |  ]
   #resume_data.contacts.phone
@@ -41,9 +41,9 @@
 #v(0.2em)
 
 #render_introduce(resume_data.Introduce)
-#v(0.08em)
-#render_projects(resume_data.projects)
 #v(0.06em)
 #render_skills(resume_data.skills)
+#v(0.06em)
+#render_projects(resume_data.projects)
 #v(0.06em)
 #render_education_certs(resume_data.education, resume_data.certifications)

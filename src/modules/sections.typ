@@ -88,11 +88,11 @@
 
 #let render_introduce(introduce) = [
   #section_title("Introduce")
-  #show heading.where(level: 2): it => block(above: 0.72em, below: 0.34em)[
+  #show heading.where(level: 2): it => block(above: 0.72em, below: 0.16em)[
     #text(size: 9pt, weight: 760, fill: c-primary)[#it.body]
   ]
   #show strong: it => text(weight: 710, fill: c-primary)[#it.body]
-  #show list.item: it => block(below: 0.36em)[#it]
+  #show list.item: it => block(below: 0.22em)[#it]
   #set list(marker: [-], indent: 1.1em, body-indent: 0.6em, tight: false)
   #set par(leading: 0.94em, spacing: 0.62em, justify: false)
   #text(size: 9.3pt, fill: c-primary)[#eval(introduce, mode: "markup")]

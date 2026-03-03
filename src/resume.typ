@@ -11,7 +11,7 @@
   margin: (top: 1.05cm, left: 1.15cm, right: 1.15cm, bottom: 1.15cm),
 )
 #set text(
-  font: ("Pretendard", "Noto Sans CJK KR", "Malgun Gothic", "Arial"),
+  font: ("Malgun Gothic", "Arial"),
   fallback: true,
   size: 10pt,
   fill: c-primary,

@@ -69,7 +69,7 @@
     column-gutter: 5pt,
     align: (left + horizon, left + horizon),
     chip(h.tag, color: color, size: 7.8pt),
-    text(size: 15pt, weight: 760, fill: c-primary)[#str(idx + 1). #h.title],
+    text(size: 10.4pt, weight: 760, fill: c-primary)[#str(idx + 1). #h.title],
   )
   v(0.16em)
   for item in h.items {
@@ -90,7 +90,7 @@
 #let render_introduce(introduce) = [
   #section_title("Introduce")
   #show heading.where(level: 2): it => block(above: 0.9em, below: 0.55em)[
-    #text(size: 15pt, weight: 760, fill: c-primary)[#it.body]
+    #text(size: 10.4pt, weight: 760, fill: c-primary)[#it.body]
   ]
   #show strong: it => it.body
   #show list.item: it => block(below: 0.65em)[#it]

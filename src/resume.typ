@@ -51,9 +51,9 @@
 #v(0.08em)
 
 #render_introduce(resume_data.Introduce)
-#v(0.05em)
+#v(0.2em)
 #render_skills(resume_data.skills)
-#v(0.05em)
+#v(0.2em)
 #render_projects(resume_data.projects)
-#v(0.05em)
+#v(0.2em)
 #render_education_certs(resume_data.education, resume_data.certifications)

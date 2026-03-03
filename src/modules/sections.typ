@@ -169,6 +169,7 @@
   ]
 
   #if certifications.len() > 0 [
+    #v(0.18em)
     #section_title("Certifications")
     #for cert in certifications [
       #grid(

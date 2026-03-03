@@ -44,7 +44,7 @@
   else { c-accent }
 }
 
-#let chip(body, color: c-accent, size: 6.75pt) = box(
+#let chip(body, color: c-accent, size: 7.5pt) = box(
   fill: c-chip-bg,
   stroke: 0.45pt + c-chip-border,
   radius: 3pt,
@@ -55,7 +55,7 @@
 
 #let section_title(title) = [
   #v(0.62em)
-  #text(size: 10pt, weight: 800, fill: c-accent)[#title]
+  #text(size: 10.8pt, weight: 800, fill: c-accent)[#title]
   #v(0.16em)
   #line(length: 100%, stroke: 0.65pt + c-line)
   #v(0.28em)
@@ -68,8 +68,8 @@
     columns: (auto, 1fr),
     column-gutter: 5pt,
     align: (left + horizon, left + horizon),
-    chip(h.tag, color: color, size: 6.5pt),
-    text(size: 8.3pt, weight: 760, fill: c-primary)[#str(idx + 1). #h.title],
+    chip(h.tag, color: color, size: 7.2pt),
+    text(size: 9.1pt, weight: 760, fill: c-primary)[#str(idx + 1). #h.title],
   )
   v(0.16em)
   for item in h.items {
@@ -77,8 +77,8 @@
       columns: (8pt, 1fr),
       column-gutter: 4pt,
       align: (left + top, left + top),
-      text(size: 8pt, fill: c-muted)[-],
-      [#set text(size: 8.1pt, fill: c-primary)
+      text(size: 8.8pt, fill: c-muted)[-],
+      [#set text(size: 9pt, fill: c-primary)
        #set par(leading: 0.82em, justify: false)
        #eval(item, mode: "markup")],
     )
@@ -89,13 +89,13 @@
 #let render_introduce(introduce) = [
   #section_title("Introduce")
   #show heading.where(level: 2): it => block(above: 0.72em, below: 0.34em)[
-    #text(size: 8.25pt, weight: 760, fill: c-primary)[#it.body]
+    #text(size: 9pt, weight: 760, fill: c-primary)[#it.body]
   ]
   #show strong: it => text(weight: 710, fill: c-primary)[#it.body]
   #show list.item: it => block(below: 0.36em)[#it]
   #set list(marker: [-], indent: 1.1em, body-indent: 0.6em, tight: false)
   #set par(leading: 0.94em, spacing: 0.62em, justify: false)
-  #text(size: 8.5pt, fill: c-primary)[#eval(introduce, mode: "markup")]
+  #text(size: 9.3pt, fill: c-primary)[#eval(introduce, mode: "markup")]
 ]
 
 #let render_projects(projects) = [
@@ -105,17 +105,17 @@
       columns: (1fr, auto),
       column-gutter: 8pt,
       align: (left + top, right + top),
-      text(size: 9.25pt, weight: 760, fill: c-primary)[#project.name],
-      text(size: 7.2pt, fill: c-muted)[#project.period],
+      text(size: 10pt, weight: 760, fill: c-primary)[#project.name],
+      text(size: 8pt, fill: c-muted)[#project.period],
     )
     #v(0.05em)
-    #text(size: 7.7pt, weight: 650, fill: c-muted)[
+    #text(size: 8.5pt, weight: 650, fill: c-muted)[
       #project.role#(if "team" in project { "  |  " + project.team } else { "" })
     ]
 
     #if "overview" in project [
       #v(0.13em)
-      #text(size: 8.05pt, fill: c-muted)[#project.overview]
+      #text(size: 8.8pt, fill: c-muted)[#project.overview]
     ]
 
     #v(0.18em)
@@ -138,11 +138,11 @@
     column-gutter: 8pt,
     row-gutter: 0.34em,
     align: (left + top, left + top),
-    text(size: 7.5pt, weight: 700, fill: c-muted)[Backend],
+    text(size: 8.2pt, weight: 700, fill: c-muted)[Backend],
     [#for s in skills.backend.split(", ") [#chip(s, color: rgb("#16a34a"))#h(2pt)]],
-    text(size: 7.5pt, weight: 700, fill: c-muted)[Database],
+    text(size: 8.2pt, weight: 700, fill: c-muted)[Database],
     [#for s in skills.database.split(", ") [#chip(s, color: rgb("#1d4ed8"))#h(2pt)]],
-    text(size: 7.5pt, weight: 700, fill: c-muted)[Cloud/DevOps],
+    text(size: 8.2pt, weight: 700, fill: c-muted)[Cloud/DevOps],
     [#for s in skills.cloud.split(", ") [#chip(s, color: rgb("#ea580c"))#h(2pt)]],
   )
 ]
@@ -155,24 +155,24 @@
       columns: (1fr, auto),
       align: (left + top, right + top),
       [
-        #text(size: 8.6pt, weight: 730, fill: c-primary)[#edu.school]
+        #text(size: 9.4pt, weight: 730, fill: c-primary)[#edu.school]
         #v(0.06em)
-        #text(size: 7.7pt, fill: c-muted)[#edu.major]
+        #text(size: 8.4pt, fill: c-muted)[#edu.major]
       ],
-      text(size: 7.25pt, fill: c-muted)[#edu.period],
+      text(size: 8pt, fill: c-muted)[#edu.period],
     )
   ]
 
   #if certifications.len() > 0 [
     #v(0.24em)
-    #text(size: 7.55pt, weight: 700, fill: c-accent)[Certifications]
+    #text(size: 8.3pt, weight: 700, fill: c-accent)[Certifications]
     #v(0.08em)
     #for cert in certifications [
       #grid(
         columns: (1fr, auto),
         align: (left + top, right + top),
-        text(size: 8pt, fill: c-primary)[- #cert.title],
-        text(size: 7.25pt, fill: c-muted)[#cert.date],
+        text(size: 8.8pt, fill: c-primary)[- #cert.title],
+        text(size: 8pt, fill: c-muted)[#cert.date],
       )
     ]
   ]

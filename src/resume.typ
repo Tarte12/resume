@@ -13,7 +13,7 @@
 #set text(
   font: ("Pretendard", "Noto Sans CJK KR", "Malgun Gothic", "Arial"),
   fallback: true,
-  size: 8.6pt,
+  size: 9.4pt,
   fill: c-primary,
 )
 #set par(leading: 0.72em)
@@ -21,12 +21,12 @@
 #align(center)[
   #text(size: 16.5pt, weight: 860, fill: c-primary)[#resume_data.name_kr]
   #v(0.06em)
-  #text(size: 8.1pt, fill: c-muted)[#resume_data.name_en]
+  #text(size: 8.9pt, fill: c-muted)[#resume_data.name_en]
   #v(0.12em)
-  #text(size: 8pt, weight: 620, fill: c-muted)[#resume_data.tagline]
+  #text(size: 8.8pt, weight: 620, fill: c-muted)[#resume_data.tagline]
 
   #v(0.26em)
-  #set text(size: 7.05pt, fill: c-accent)
+  #set text(size: 7.8pt, fill: c-accent)
   #link("mailto:" + resume_data.contacts.email)[#resume_data.contacts.email]
   #text(fill: c-muted)[  |  ]
   #resume_data.contacts.phone

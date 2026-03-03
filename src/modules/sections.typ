@@ -61,28 +61,26 @@
   #v(0.28em)
 ]
 
-#let render-highlight-item(h) = {
-  if h.starts-with("[") and h.contains("] ") {
-    let raw = h.slice(1)
-    let parts = raw.split("] ")
-    let tag = parts.first()
-    let body = parts.slice(1).join("] ")
-    let color = if tag in tag-colors { tag-colors.at(tag) } else { c-accent }
+#let render-highlight-group(h, idx) = {
+  let color = if h.tag in tag-colors { tag-colors.at(h.tag) } else { c-accent }
+  v(0.2em)
+  grid(
+    columns: (auto, 1fr),
+    column-gutter: 5pt,
+    align: (left + horizon, left + horizon),
+    chip(h.tag, color: color, size: 6.5pt),
+    text(size: 8.3pt, weight: 760, fill: c-primary)[#str(idx + 1). #h.title],
+  )
+  v(0.1em)
+  for item in h.items {
     grid(
-      columns: (auto, 1fr),
-      column-gutter: 5pt,
-      align: (left + top, left + top),
-      chip(tag, color: color, size: 6.5pt),
-      text(size: 8.1pt, fill: c-primary)[#body],
-    )
-  } else {
-    grid(
-      columns: (auto, 1fr),
-      column-gutter: 5pt,
+      columns: (8pt, 1fr),
+      column-gutter: 4pt,
       align: (left + top, left + top),
       text(size: 8pt, fill: c-muted)[-],
-      text(size: 8.1pt, fill: c-primary)[#h],
+      text(size: 8.1pt, fill: c-primary)[#eval(item, mode: "markup")],
     )
+    v(0.07em)
   }
 }
 
@@ -121,9 +119,8 @@
     #v(0.18em)
     #for s in project.stack [#chip(s, color: get-tech-color(s))#h(2pt)]
 
-    #v(0.18em)
-    #set par(spacing: 0.24em)
-    #for h in project.highlights [#render-highlight-item(h)]
+    #set par(spacing: 0.16em)
+    #for (hidx, h) in project.highlights.enumerate() [#render-highlight-group(h, hidx)]
 
     #if idx < projects.len() - 1 [
       #v(0.32em)

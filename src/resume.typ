@@ -13,26 +13,30 @@
 #set text(
   font: (
     "Malgun Gothic",
+    "Pretendard",
     "NanumGothic",
+    "Dotum",
+    "Gulim",
+    "MS PGothic",
     "Yu Gothic UI",
     "Segoe UI",
     "Arial",
   ),
   fallback: true,
-  size: 10.9pt,
+  size: 12.9pt,
   fill: c-primary,
 )
 #set par(leading: 0.86em)
 
 #align(center)[
-  #text(size: 17.8pt, weight: 820, fill: c-primary)[#resume_data.name_kr]
+  #text(size: 19.8pt, weight: 820, fill: c-primary)[#resume_data.name_kr]
   #v(0.05em)
-  #text(size: 9.2pt, fill: c-muted)[#resume_data.name_en]
+  #text(size: 11.2pt, fill: c-muted)[#resume_data.name_en]
   #v(0.1em)
-  #text(size: 8.9pt, weight: 650, fill: c-muted)[#resume_data.tagline]
+  #text(size: 10.9pt, weight: 650, fill: c-muted)[#resume_data.tagline]
 
   #v(0.24em)
-  #set text(size: 8.1pt, fill: c-muted)
+  #set text(size: 10.1pt, fill: c-muted)
   #link("mailto:" + resume_data.contacts.email)[#text(fill: c-accent)[#resume_data.contacts.email]]
   #text(fill: c-muted)[  ·  ]
   #text(fill: c-accent)[#resume_data.contacts.phone]

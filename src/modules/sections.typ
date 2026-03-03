@@ -96,9 +96,9 @@
     #text(size: 10pt, weight: 740, fill: c-accent)[#it.body]
   ]
   #show strong: it => it.body
-  #show list.item: it => block(below: 0.62em)[#it]
+  #show list.item: it => block(below: 0.68em)[#it]
   #set list(marker: [•], indent: 1.05em, body-indent: 0.52em, tight: false)
-  #set par(leading: 1.08em, spacing: 0.72em, justify: false)
+  #set par(leading: 1.14em, spacing: 0.8em, justify: false)
   #text(size: 9.5pt, fill: c-primary)[#eval(introduce, mode: "markup")]
 ]
 

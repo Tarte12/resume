@@ -19,7 +19,7 @@
     "Arial",
   ),
   fallback: true,
-  size: 9.9pt,
+  size: 10.9pt,
   fill: c-primary,
 )
 #set par(leading: 0.86em)
@@ -35,7 +35,7 @@
   #set text(size: 8.1pt, fill: c-muted)
   #link("mailto:" + resume_data.contacts.email)[#text(fill: c-accent)[#resume_data.contacts.email]]
   #text(fill: c-muted)[  ·  ]
-  #resume_data.contacts.phone
+  #text(fill: c-accent)[#resume_data.contacts.phone]
   #text(fill: c-muted)[  ·  ]
   #link("https://github.com/" + resume_data.contacts.github)[#text(fill: c-accent)[github.com/#resume_data.contacts.github]]
   #text(fill: c-muted)[  ·  ]

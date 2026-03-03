@@ -11,7 +11,13 @@
   margin: (top: 1.05cm, left: 1.15cm, right: 1.15cm, bottom: 1.15cm),
 )
 #set text(
-  font: ("Pretendard", "Malgun Gothic", "Segoe UI", "Arial"),
+  font: (
+    "Malgun Gothic",
+    "NanumGothic",
+    "Yu Gothic UI",
+    "Segoe UI",
+    "Arial",
+  ),
   fallback: true,
   size: 10pt,
   fill: c-primary,

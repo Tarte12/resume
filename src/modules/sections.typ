@@ -55,7 +55,7 @@
 
 #let section_title(title) = [
   #v(0.62em)
-  #text(size: 11.5pt, weight: 800, fill: c-accent)[#title]
+  #text(size: 17pt, weight: 800, fill: c-accent)[#title]
   #v(0.16em)
   #line(length: 100%, stroke: 0.65pt + c-line)
   #v(0.28em)
@@ -69,7 +69,7 @@
     column-gutter: 5pt,
     align: (left + horizon, left + horizon),
     chip(h.tag, color: color, size: 7.8pt),
-    text(size: 10pt, weight: 760, fill: c-primary)[#str(idx + 1). #h.title],
+    text(size: 15pt, weight: 760, fill: c-primary)[#str(idx + 1). #h.title],
   )
   v(0.16em)
   for item in h.items {
@@ -78,7 +78,8 @@
       column-gutter: 4pt,
       align: (left + top, left + top),
       text(size: 9.8pt, fill: c-muted)[-],
-      [#set text(size: 9.8pt, fill: c-primary)
+      [#show strong: it => it.body
+       #set text(size: 9.8pt, fill: c-primary)
        #set par(leading: 0.82em, justify: false)
        #eval(item, mode: "markup")],
     )
@@ -89,9 +90,9 @@
 #let render_introduce(introduce) = [
   #section_title("Introduce")
   #show heading.where(level: 2): it => block(above: 0.9em, below: 0.55em)[
-    #text(size: 10pt, weight: 760, fill: c-primary)[#it.body]
+    #text(size: 15pt, weight: 760, fill: c-primary)[#it.body]
   ]
-  #show strong: it => text(weight: 710, fill: c-primary)[#it.body]
+  #show strong: it => it.body
   #show list.item: it => block(below: 0.65em)[#it]
   #set list(marker: [-], indent: 1.1em, body-indent: 0.6em, tight: false)
   #set par(leading: 1.0em, spacing: 0.75em, justify: false)
@@ -134,7 +135,7 @@
 #let render_skills(skills) = [
   #section_title("Skills")
   #grid(
-    columns: (60pt, 1fr),
+    columns: (75pt, 1fr),
     column-gutter: 8pt,
     row-gutter: 0.34em,
     align: (left + top, left + top),

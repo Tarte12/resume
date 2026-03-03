@@ -2,7 +2,7 @@
 name: "Kim Huisu (김희수)"
 name_kr: "김희수"
 name_en: "Kim Huisu"
-tagline: "Backend Engineer"
+tagline: "Software Engineer"
 
 contacts:
   phone: "010-8894-8093"
@@ -25,15 +25,11 @@ Introduce: |
 
   - *Redis 기반 Refresh Token Rotation* 및 *Access Token Blacklist* 전략 도입
 
-  - *ModelMapper 대신 도메인 내부 정적 팩토리 메서드*를 도입해 객체 생성 책임을 구조 내부로 이동
-
-  *AI를 활용해, 공정과 구조를 함께 설계합니다.*
-
 projects:
   - name: "Cohi-Chat"
     description: "개발자를 위한 커피챗 예약 서비스"
     period: "2026.01 ~ Present"
-    team: "팀 프로젝트 (2인)"
+    team: "팀 프로젝트"
     role: "Backend Infrastructure & Security Lead"
     overview: "FastAPI에서 Spring Boot로의 마이그레이션을 주도하며, 보안 아키텍처 고도화와 데이터 정규화를 통해 시스템의 지속 가능성을 확보했습니다."
     highlights:
@@ -69,7 +65,7 @@ projects:
 skills:
   backend: "Java, Spring Boot, JPA/Hibernate"
   database: "PostgreSQL, MySQL, Redis, SQLite"
-  cloud: "AWS (EC2, S3), GitHub Actions, Docker"
+  cloud: "AWS, GitHub Actions, Docker"
 
 education:
   - school: "한신대학교"

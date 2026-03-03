@@ -55,16 +55,16 @@
 ]
 
 #let section_title(title) = [
-  #v(0.32em)
+  #v(0.2em)
   #text(size: section-title-size, weight: 760, fill: c-primary)[#title]
-  #v(0.05em)
+  #v(0.03em)
   #line(length: 100%, stroke: 0.65pt + c-line)
-  #v(0.14em)
+  #v(0.08em)
 ]
 
 #let render-highlight-group(h, idx) = {
   let color = if h.tag in tag-colors { tag-colors.at(h.tag) } else { c-accent }
-  v(0.3em)
+  v(0.18em)
   grid(
     columns: (auto, 1fr),
     column-gutter: 5pt,
@@ -72,7 +72,7 @@
     chip(h.tag, color: color, size: 7.8pt),
     text(size: 10.4pt, weight: 760, fill: c-primary)[#str(idx + 1). #h.title],
   )
-  v(0.16em)
+  v(0.1em)
   for item in h.items {
     grid(
       columns: (8pt, 1fr),
@@ -84,7 +84,7 @@
        #set par(leading: 0.82em, justify: false)
        #eval(item, mode: "markup")],
     )
-    v(0.22em)
+    v(0.14em)
   }
 }
 
@@ -116,19 +116,19 @@
     ]
 
     #if "overview" in project [
-      #v(0.13em)
+      #v(0.09em)
       #text(size: 9.8pt, fill: c-muted)[#project.overview]
     ]
 
-    #v(0.18em)
+    #v(0.12em)
     #for s in project.stack [#chip(s, color: get-tech-color(s))#h(2pt)]
 
     #for (hidx, h) in project.highlights.enumerate() [#render-highlight-group(h, hidx)]
 
     #if idx < projects.len() - 1 [
-      #v(0.32em)
+      #v(0.18em)
       #line(length: 100%, stroke: 0.5pt + c-line)
-      #v(0.22em)
+      #v(0.12em)
     ]
   ]
 ]

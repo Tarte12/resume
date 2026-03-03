@@ -38,34 +38,20 @@ projects:
         items:
           - "*기능 단위 아키텍처 재편:* 인증/회원 로직이 분산된 구조에서 기능 단위(features/member)로 경계를 재정의하여 결합도 저하 및 변경 영향도 추적 용이성 확보."
           - "*Stateless OAuth 연동:* 세션 기반 OAuth 라이브러리 대신 *RestClient* 수동 연동을 통해 Stateless JWT 구조와 정합성을 맞추고, 외부 API 호출과 DB 트랜잭션 경계를 분리하여 인증 플로우 안정성 확보."
-          - "*객체 생성 책임 명확화:* ModelMapper 제거 및 도메인 내 정적 팩토리 메서드 도입으로 객체 생성 책임을 도메인 계층으로 응집하여 Null 주입 결함 리스크 최소화."
       - tag: "데이터"
         title: "데이터 구조 최적화 및 정규화"
         items:
           - "*JSON 데이터 정규화:* 조회 제한이 있던 JSON 배열 기반의 요일 정보를 정규화 테이블+*JPQL JOIN* 구조로 전환하여 동시 검증 및 조회 확장성 확보."
-          - "*시간대 모델 표준화:* LocalDateTime을 *Instant(UTC)*로 일괄 전환하여 서버-클라이언트 간 직렬화 해석 차이 및 시간대 불일치 리스크 해소."
       - tag: "보안"
         title: "인증 보안 체계 고도화"
         items:
           - "*토큰 저장소 및 보안 강화:* Refresh Token 저장소를 *Redis*(TTL)+SHA-256 해시로 전환하여 토큰 관리 효율 및 유출 대응 수준 강화."
           - "*즉시 무효화 메커니즘:* 로그아웃 시 *Access Token Blacklist*를 도입하여 필터 단계에서 토큰을 즉시 차단함으로써 보안 공백 최소화."
-          - "*Rate Limiting 재설계:* 인증 전 헤더 식별자 방식에서 서버 검증 사용자 기준으로 제한 로직을 재설계하여 식별자 위조 우회 가능성 제거."
-      - tag: "설계"
-        title: "API 표준화 및 통합 테스트 강화"
-        items:
-          - "*API 공통 규약 통합:* 상이한 응답 포맷을 공통 Envelope(success/data/error)로 통일하여 클라이언트 처리 일관성 확보."
-          - "*계약 중심 테스트 강화:* Controller 테스트를 응답 스키마 검증 중심으로 보강하여 상태코드 및 데이터 구조 불일치 회귀(Regression) 조기 탐지."
-      - tag: "공정"
-        title: "개발 프로세스 및 품질 관리 개선"
-        items:
-          - "*생산성 기반 리뷰 체계:* 1PR = 1Feature 원칙으로 병합 충돌과 재작업 비용을 낮추고, *AI 기반 리뷰 루프*로 이슈 식별 및 테스트 보강 속도 극대화."
-          - "*코드 품질 관리 표준화:* UI와 비즈니스 로직을 분리(순수 함수화)하고 단위 테스트를 보강하여 회귀 위험이 적은 안정적인 코드 기반 구축."
       - tag: "공정"
         title: "AI 협업 가이드 표준화 및 모델별 최적화"
         items:
           - "*가이드 역할 분리:* 범용 규칙은 `AGENTS.md`로 통합하고 Claude 전용 운영 규칙은 `CLAUDE.md/.claude/rules`로 분리해 도구 생태계 차이를 구조적으로 관리."
-          - "*모델별 최적화 전략:* 공통 규칙은 단일 source of truth로 유지하고 모델별 파일은 delta-only로 최소화해 중복 프롬프트로 인한 충돌·오염 리스크를 축소."
-          - "*운영 일관성 강화:* 문서 우선순위(충돌 시 `CLAUDE.md` 계열 우선)를 명시해 AI 협업 과정의 재현성과 유지보수성을 개선."
+          - "*모델별 최적화 전략:* 공통 규칙은 단일 source of truth로 유지하고 모델별 파일은 delta-only로 최소화해 중복 프롬프트 충돌 리스크를 축소."
     stack: ["Java 21", "Spring Boot 3.5", "Spring Security", "JPA/Hibernate", "Redis", "PostgreSQL", "Docker", "GitHub Actions", "JUnit5"]
 
   - name: "Inkpad"

@@ -11,7 +11,7 @@
   margin: (top: 1.05cm, left: 1.15cm, right: 1.15cm, bottom: 1.15cm),
 )
 #set text(
-  font: ("Malgun Gothic", "Arial"),
+  font: ("Pretendard", "Malgun Gothic", "Segoe UI", "Arial"),
   fallback: true,
   size: 10pt,
   fill: c-primary,
@@ -36,14 +36,14 @@
   #link(resume_data.contacts.blog)[velog.io/\@emprimula]
 ]
 
-#v(0.12em)
+#v(0.08em)
 #line(length: 100%, stroke: 0.65pt + c-line)
-#v(0.1em)
+#v(0.07em)
 
 #render_introduce(resume_data.Introduce)
-#v(0.03em)
+#v(0.02em)
 #render_skills(resume_data.skills)
-#v(0.03em)
+#v(0.02em)
 #render_projects(resume_data.projects)
-#v(0.03em)
+#v(0.02em)
 #render_education_certs(resume_data.education, resume_data.certifications)

@@ -4,8 +4,6 @@
 #let c-line = rgb("#d8e1ee")
 #let c-chip-bg = rgb("#f3f7fd")
 #let c-chip-border = rgb("#d9e5f5")
-#let c-panel-bg = rgb("#fbfdff")
-#let c-panel-border = rgb("#e3eaf5")
 #let section-title-size = 11.5pt
 
 #let tech-colors = (
@@ -58,13 +56,7 @@
 
 #let section_title(title) = [
   #v(0.24em)
-  #grid(
-    columns: (2.4pt, 1fr),
-    column-gutter: 6pt,
-    align: (left + horizon, left + horizon),
-    box(width: 2.4pt, height: 0.96em, radius: 1.2pt, fill: c-accent)[],
-    text(size: section-title-size, weight: 780, fill: c-primary)[#title],
-  )
+  #text(size: section-title-size, weight: 780, fill: c-primary)[#title]
   #v(0.07em)
   #line(length: 100%, stroke: 0.52pt + c-line)
   #v(0.12em)
@@ -73,36 +65,29 @@
 #let render-highlight-group(h, idx) = {
   let color = if h.tag in tag-colors { tag-colors.at(h.tag) } else { c-accent }
   v(0.16em)
-  box(
-    fill: c-panel-bg,
-    stroke: 0.45pt + c-panel-border,
-    radius: 4pt,
-    inset: (x: 8pt, y: 6pt),
-  )[
-    #grid(
-      columns: (auto, 1fr),
-      column-gutter: 5pt,
-      align: (left + horizon, left + horizon),
-      chip(h.tag, color: color, size: 7.5pt),
-      text(size: 10.1pt, weight: 740, fill: c-primary)[#str(idx + 1). #h.title],
+  grid(
+    columns: (auto, 1fr),
+    column-gutter: 5pt,
+    align: (left + horizon, left + horizon),
+    chip(h.tag, color: color, size: 7.5pt),
+    text(size: 10.1pt, weight: 740, fill: c-primary)[#str(idx + 1). #h.title],
+  )
+  v(0.08em)
+  for item in h.items {
+    grid(
+      columns: (8.5pt, 1fr),
+      column-gutter: 4pt,
+      align: (left + top, left + top),
+      text(size: 9.4pt, fill: c-muted)[•],
+      [
+        #show strong: it => it.body
+        #set text(size: 9.4pt, fill: c-primary)
+        #set par(leading: 0.9em, spacing: 0.34em, justify: false)
+        #eval(item, mode: "markup")
+      ],
     )
-    #v(0.08em)
-    #for item in h.items [
-      #grid(
-        columns: (8.5pt, 1fr),
-        column-gutter: 4pt,
-        align: (left + top, left + top),
-        text(size: 9.4pt, fill: c-muted)[•],
-        [
-          #show strong: it => it.body
-          #set text(size: 9.4pt, fill: c-primary)
-          #set par(leading: 0.9em, spacing: 0.34em, justify: false)
-          #eval(item, mode: "markup")
-        ],
-      )
-      #v(0.1em)
-    ]
-  ]
+    v(0.1em)
+  }
 }
 
 #let render_introduce(introduce) = [

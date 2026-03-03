@@ -1,10 +1,12 @@
 ﻿#let c-primary = rgb("#1f2937")
-#let c-accent = rgb("#2f7ac6")
-#let c-muted = rgb("#6b7280")
-#let c-line = rgb("#cbd5e1")
-#let c-chip-bg = rgb("#eef4fb")
-#let c-chip-border = rgb("#d4e4f8")
-#let section-title-size = 12.2pt
+#let c-accent = rgb("#1d4ed8")
+#let c-muted = rgb("#64748b")
+#let c-line = rgb("#d8e1ee")
+#let c-chip-bg = rgb("#f3f7fd")
+#let c-chip-border = rgb("#d9e5f5")
+#let c-panel-bg = rgb("#fbfdff")
+#let c-panel-border = rgb("#e3eaf5")
+#let section-title-size = 11.5pt
 
 #let tech-colors = (
   "Java 21": rgb("#2563eb"),
@@ -45,59 +47,74 @@
   else { c-accent }
 }
 
-#let chip(body, color: c-accent, size: 8pt) = box(
+#let chip(body, color: c-accent, size: 7.8pt) = box(
   fill: c-chip-bg,
   stroke: 0.45pt + c-chip-border,
-  radius: 3pt,
-  inset: (x: 4pt, y: 1.2pt),
+  radius: 2.8pt,
+  inset: (x: 4.4pt, y: 1.35pt),
 )[
-  #text(size: size, weight: 700, fill: color)[#body]
+  #text(size: size, weight: 680, fill: color)[#body]
 ]
 
 #let section_title(title) = [
-  #v(0.2em)
-  #text(size: section-title-size, weight: 760, fill: c-primary)[#title]
-  #v(0.03em)
-  #line(length: 100%, stroke: 0.65pt + c-line)
-  #v(0.08em)
+  #v(0.24em)
+  #grid(
+    columns: (2.4pt, 1fr),
+    column-gutter: 6pt,
+    align: (left + horizon, left + horizon),
+    box(width: 2.4pt, height: 0.96em, radius: 1.2pt, fill: c-accent)[],
+    text(size: section-title-size, weight: 780, fill: c-primary)[#title],
+  )
+  #v(0.07em)
+  #line(length: 100%, stroke: 0.52pt + c-line)
+  #v(0.12em)
 ]
 
 #let render-highlight-group(h, idx) = {
   let color = if h.tag in tag-colors { tag-colors.at(h.tag) } else { c-accent }
-  v(0.18em)
-  grid(
-    columns: (auto, 1fr),
-    column-gutter: 5pt,
-    align: (left + horizon, left + horizon),
-    chip(h.tag, color: color, size: 7.8pt),
-    text(size: 10.4pt, weight: 760, fill: c-primary)[#str(idx + 1). #h.title],
-  )
-  v(0.1em)
-  for item in h.items {
-    grid(
-      columns: (8pt, 1fr),
-      column-gutter: 4pt,
-      align: (left + top, left + top),
-      text(size: 9.8pt, fill: c-muted)[-],
-      [#show strong: it => it.body
-       #set text(size: 9.8pt, fill: c-primary)
-       #set par(leading: 0.82em, justify: false)
-       #eval(item, mode: "markup")],
+  v(0.16em)
+  box(
+    fill: c-panel-bg,
+    stroke: 0.45pt + c-panel-border,
+    radius: 4pt,
+    inset: (x: 8pt, y: 6pt),
+  )[
+    #grid(
+      columns: (auto, 1fr),
+      column-gutter: 5pt,
+      align: (left + horizon, left + horizon),
+      chip(h.tag, color: color, size: 7.5pt),
+      text(size: 10.1pt, weight: 740, fill: c-primary)[#str(idx + 1). #h.title],
     )
-    v(0.14em)
-  }
+    #v(0.08em)
+    #for item in h.items [
+      #grid(
+        columns: (8.5pt, 1fr),
+        column-gutter: 4pt,
+        align: (left + top, left + top),
+        text(size: 9.4pt, fill: c-muted)[•],
+        [
+          #show strong: it => it.body
+          #set text(size: 9.4pt, fill: c-primary)
+          #set par(leading: 0.9em, spacing: 0.34em, justify: false)
+          #eval(item, mode: "markup")
+        ],
+      )
+      #v(0.1em)
+    ]
+  ]
 }
 
 #let render_introduce(introduce) = [
   #section_title("Introduce")
-  #show heading.where(level: 2): it => block(above: 0.9em, below: 0.55em)[
-    #text(size: 10.4pt, weight: 760, fill: c-primary)[#it.body]
+  #show heading.where(level: 2): it => block(above: 0.72em, below: 0.42em)[
+    #text(size: 10pt, weight: 740, fill: c-accent)[#it.body]
   ]
   #show strong: it => it.body
-  #show list.item: it => block(below: 0.65em)[#it]
-  #set list(marker: [-], indent: 1.1em, body-indent: 0.6em, tight: false)
-  #set par(leading: 1.0em, spacing: 0.75em, justify: false)
-  #text(size: 9.8pt, fill: c-primary)[#eval(introduce, mode: "markup")]
+  #show list.item: it => block(below: 0.46em)[#it]
+  #set list(marker: [•], indent: 1.05em, body-indent: 0.52em, tight: false)
+  #set par(leading: 0.92em, spacing: 0.56em, justify: false)
+  #text(size: 9.5pt, fill: c-primary)[#eval(introduce, mode: "markup")]
 ]
 
 #let render_projects(projects) = [
@@ -105,30 +122,30 @@
   #for (idx, project) in projects.enumerate() [
     #grid(
       columns: (1fr, auto),
-      column-gutter: 8pt,
+      column-gutter: 10pt,
       align: (left + top, right + top),
-      text(size: 10.8pt, weight: 760, fill: c-primary)[#project.name],
-      text(size: 8.5pt, fill: c-muted)[#project.period],
+      text(size: 10.6pt, weight: 760, fill: c-primary)[#project.name],
+      text(size: 8.4pt, fill: c-muted)[#project.period],
     )
-    #v(0.05em)
-    #text(size: 9pt, weight: 650, fill: c-muted)[
+    #v(0.04em)
+    #text(size: 8.7pt, weight: 650, fill: c-muted)[
       #project.role#(if "team" in project { "  |  " + project.team } else { "" })
     ]
 
     #if "overview" in project [
-      #v(0.09em)
-      #text(size: 9.8pt, fill: c-muted)[#project.overview]
+      #v(0.08em)
+      #text(size: 9.3pt, fill: c-muted)[#project.overview]
     ]
 
-    #v(0.12em)
-    #for s in project.stack [#chip(s, color: get-tech-color(s))#h(2pt)]
+    #v(0.1em)
+    #for s in project.stack [#chip(s, color: get-tech-color(s))#h(2.2pt)]
 
     #for (hidx, h) in project.highlights.enumerate() [#render-highlight-group(h, hidx)]
 
     #if idx < projects.len() - 1 [
-      #v(0.18em)
+      #v(0.2em)
       #line(length: 100%, stroke: 0.5pt + c-line)
-      #v(0.12em)
+      #v(0.14em)
     ]
   ]
 ]
@@ -136,15 +153,15 @@
 #let render_skills(skills) = [
   #section_title("Skills")
   #grid(
-    columns: (75pt, 1fr),
+    columns: (78pt, 1fr),
     column-gutter: 8pt,
-    row-gutter: 0.34em,
+    row-gutter: 0.42em,
     align: (left + top, left + top),
-    text(size: 9pt, weight: 700, fill: c-muted)[Backend],
+    text(size: 8.7pt, weight: 720, fill: c-muted)[Backend],
     [#for s in skills.backend.split(", ") [#chip(s, color: rgb("#16a34a"))#h(2pt)]],
-    text(size: 9pt, weight: 700, fill: c-muted)[Database],
+    text(size: 8.7pt, weight: 720, fill: c-muted)[Database],
     [#for s in skills.database.split(", ") [#chip(s, color: rgb("#1d4ed8"))#h(2pt)]],
-    text(size: 9pt, weight: 700, fill: c-muted)[Cloud/DevOps],
+    text(size: 8.7pt, weight: 720, fill: c-muted)[Cloud/DevOps],
     [#for s in skills.cloud.split(", ") [#chip(s, color: rgb("#ea580c"))#h(2pt)]],
   )
 ]
@@ -152,17 +169,18 @@
 #let render_education_certs(education, certifications) = [
   #section_title("Education")
 
-  #for edu in education [
+  #for (idx, edu) in education.enumerate() [
     #grid(
       columns: (1fr, auto),
       align: (left + top, right + top),
       [
-        #text(size: 10pt, weight: 760, fill: c-primary)[#edu.school]
+        #text(size: 9.9pt, weight: 740, fill: c-primary)[#edu.school]
         #v(0.06em)
-        #text(size: 9.8pt, fill: c-muted)[#edu.major]
+        #text(size: 9.3pt, fill: c-muted)[#edu.major]
       ],
-      text(size: 8.5pt, fill: c-muted)[#edu.period],
+      text(size: 8.4pt, fill: c-muted)[#edu.period],
     )
+    #if idx < education.len() - 1 [#v(0.1em)]
   ]
 
   #if certifications.len() > 0 [
@@ -171,8 +189,8 @@
       #grid(
         columns: (1fr, auto),
         align: (left + top, right + top),
-        text(size: 9.8pt, fill: c-primary)[- #cert.title],
-        text(size: 8.5pt, fill: c-muted)[#cert.date],
+        text(size: 9.3pt, fill: c-primary)[• #cert.title],
+        text(size: 8.4pt, fill: c-muted)[#cert.date],
       )
     ]
   ]

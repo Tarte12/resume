@@ -4,6 +4,7 @@
 #let c-line = rgb("#cbd5e1")
 #let c-chip-bg = rgb("#eef4fb")
 #let c-chip-border = rgb("#d4e4f8")
+#let section-title-size = 12.2pt
 
 #let tech-colors = (
   "Java 21": rgb("#2563eb"),
@@ -54,11 +55,11 @@
 ]
 
 #let section_title(title) = [
-  #v(0.62em)
-  #text(size: 17pt, weight: 800, fill: c-accent)[#title]
-  #v(0.16em)
+  #v(0.32em)
+  #text(size: section-title-size, weight: 760, fill: c-primary)[#title]
+  #v(0.05em)
   #line(length: 100%, stroke: 0.65pt + c-line)
-  #v(0.28em)
+  #v(0.14em)
 ]
 
 #let render-highlight-group(h, idx) = {
@@ -100,7 +101,7 @@
 ]
 
 #let render_projects(projects) = [
-  #section_title("Project")
+  #section_title("Projects")
   #for (idx, project) in projects.enumerate() [
     #grid(
       columns: (1fr, auto),
@@ -165,9 +166,7 @@
   ]
 
   #if certifications.len() > 0 [
-    #v(0.24em)
-    #text(size: 9pt, weight: 700, fill: c-accent)[Certifications]
-    #v(0.08em)
+    #section_title("Certifications")
     #for cert in certifications [
       #grid(
         columns: (1fr, auto),

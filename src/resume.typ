@@ -36,14 +36,14 @@
   #link(resume_data.contacts.blog)[velog.io/\@emprimula]
 ]
 
-#v(0.22em)
+#v(0.12em)
 #line(length: 100%, stroke: 0.65pt + c-line)
-#v(0.2em)
+#v(0.1em)
 
 #render_introduce(resume_data.Introduce)
-#v(0.06em)
+#v(0.03em)
 #render_skills(resume_data.skills)
-#v(0.06em)
+#v(0.03em)
 #render_projects(resume_data.projects)
-#v(0.06em)
+#v(0.03em)
 #render_education_certs(resume_data.education, resume_data.certifications)

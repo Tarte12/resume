@@ -63,7 +63,7 @@
 ]
 
 #let render-highlight-group(h, idx) = {
-  let color = if h.tag in tag-colors { tag-colors.at(h.tag) } else { c-accent }
+  let color = c-accent
   v(0.16em)
   grid(
     columns: (auto, 1fr),
@@ -93,7 +93,7 @@
 #let render_introduce(introduce) = [
   #section_title("Introduce")
   #show heading.where(level: 2): it => block(above: 0.76em, below: 0.48em)[
-    #text(size: 12pt, weight: 740, fill: c-accent)[#it.body]
+    #text(size: 12pt, weight: 740, fill: c-primary)[#it.body]
   ]
   #show strong: it => it.body
   #show list.item: it => block(below: 0.8em)[#it]

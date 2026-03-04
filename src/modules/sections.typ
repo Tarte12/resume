@@ -92,13 +92,13 @@
 
 #let render_introduce(introduce) = [
   #section_title("Introduce")
-  #show heading.where(level: 2): it => block(above: 0.72em, below: 0.42em)[
+  #show heading.where(level: 2): it => block(above: 0.76em, below: 0.48em)[
     #text(size: 12pt, weight: 740, fill: c-accent)[#it.body]
   ]
   #show strong: it => it.body
-  #show list.item: it => block(below: 0.68em)[#it]
+  #show list.item: it => block(below: 0.8em)[#it]
   #set list(marker: [•], indent: 1.05em, body-indent: 0.52em, tight: false)
-  #set par(leading: 1.14em, spacing: 0.8em, justify: false)
+  #set par(leading: 1.22em, spacing: 0.92em, justify: false)
   #text(size: 11.5pt, fill: c-primary)[#eval(introduce, mode: "markup")]
 ]
 
@@ -140,14 +140,14 @@
   #grid(
     columns: (78pt, 1fr),
     column-gutter: 8pt,
-    row-gutter: 0.56em,
+    row-gutter: 0.76em,
     align: (left + top, left + top),
     text(size: 10.7pt, weight: 720, fill: c-muted)[Backend],
-    [#for s in skills.backend.split(", ") [#chip(s, color: rgb("#16a34a"))#h(2pt)]],
+    [#for s in skills.backend.split(", ") [#chip(s, color: rgb("#16a34a"))#h(2.6pt)]],
     text(size: 10.7pt, weight: 720, fill: c-muted)[Database],
-    [#for s in skills.database.split(", ") [#chip(s, color: rgb("#1d4ed8"))#h(2pt)]],
+    [#for s in skills.database.split(", ") [#chip(s, color: rgb("#1d4ed8"))#h(2.6pt)]],
     text(size: 10.7pt, weight: 720, fill: c-muted)[Cloud/DevOps],
-    [#for s in skills.cloud.split(", ") [#chip(s, color: rgb("#ea580c"))#h(2pt)]],
+    [#for s in skills.cloud.split(", ") [#chip(s, color: rgb("#ea580c"))#h(2.6pt)]],
   )
 ]
 

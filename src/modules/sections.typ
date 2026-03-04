@@ -92,7 +92,7 @@
 
 #let render_introduce(introduce) = [
   #section_title("Introduce")
-  #show heading.where(level: 2): it => block(above: 0.76em, below: 0.36em)[
+  #show heading.where(level: 2): it => block(above: 0.76em, below: 0.72em)[
     #text(size: 12pt, weight: 740, fill: c-primary)[#it.body]
   ]
   #show strong: it => it.body

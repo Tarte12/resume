@@ -54,32 +54,6 @@ projects:
           - "*모델별 최적화 전략:* 공통 규칙은 단일 source of truth로 유지하고 모델별 파일은 delta-only로 최소화해 중복 프롬프트 충돌 리스크를 축소."
     stack: ["Java 21", "Spring Boot 3.5", "Spring Security", "JPA/Hibernate", "Redis", "PostgreSQL", "Docker", "GitHub Actions", "JUnit5"]
 
-  - name: "Inkpad"
-    description: "Spring Boot 기반 블로그 플랫폼"
-    period: "Personal Project"
-    team: "개인 프로젝트"
-    role: "Backend Developer"
-    overview: "단순 CRUD 구현을 넘어서 성능 실험 → 개선 → 리팩토링 사이클을 반복하며, 수치 기반으로 백엔드 처리 성능과 운영 안정성을 개선했습니다."
-    highlights:
-      - tag: "설계"
-        title: "파일 업로드 전략화 및 이미지 처리 최적화"
-        items:
-          - "*저장소 전략 패턴 적용:* `FileUploader` 인터페이스로 Local/S3 업로더를 분리하고 환경 설정 기반 전환 구조를 적용해 배포 유연성을 확보."
-          - "*이미지 업로드 성능 개선:* 리사이징 + WebP 변환 파이프라인과 k6 부하 테스트를 적용해 이미지 업로드 응답 시간을 *1.27s → 448ms(64.7% 개선)*, TPS를 *3.6 → 10.7*로 개선."
-      - tag: "데이터"
-        title: "Excel 공지사항 대량 업로드 배치 처리"
-        items:
-          - "*일괄 반영 파이프라인 구축:* EasyExcel 파싱, 행 단위 검증, 배치 저장 구조를 적용해 공지사항 대량 등록 처리 성능을 평균 *75% 이상* 개선."
-      - tag: "설계"
-        title: "Spring AI 챗봇 비동기 구조 고도화"
-        items:
-          - "*비동기 인증 안정화:* `@Async` 처리 구간의 SecurityContext 전파 구조를 적용해 인증 누락으로 발생하던 *403 오류*를 해결하고 비동기 인증 흐름을 유지."
-      - tag: "데이터"
-        title: "QueryDSL 기반 검색 및 조회 정확도 강화"
-        items:
-          - "*타입 안정 검색 구현:* `JPAQueryFactory` 기반 username/nickname 검색(`containsIgnoreCase`)과 count 쿼리 분리로 페이지네이션 정확성과 유지보수성을 개선."
-    stack: ["Java 21", "Spring Boot 3", "Spring Security", "JPA/Hibernate", "QueryDSL", "MySQL", "AWS S3", "CloudFront", "Docker", "JUnit5", "k6"]
-
 skills:
   backend: "Java, Spring Boot, JPA/Hibernate"
   database: "PostgreSQL, MySQL, Redis, SQLite"

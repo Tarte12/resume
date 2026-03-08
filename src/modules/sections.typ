@@ -144,6 +144,8 @@
     align: (left + top, left + top),
     text(size: 10.7pt, weight: 720, fill: c-muted)[Backend],
     [#for s in skills.backend.split(", ") [#chip(s, color: rgb("#16a34a"))#h(2.6pt)]],
+    text(size: 10.7pt, weight: 720, fill: c-muted)[Frontend],
+    [#for s in skills.frontend.split(", ") [#chip(s, color: rgb("#7c3aed"))#h(2.6pt)]],
     text(size: 10.7pt, weight: 720, fill: c-muted)[Database],
     [#for s in skills.database.split(", ") [#chip(s, color: rgb("#1d4ed8"))#h(2.6pt)]],
     text(size: 10.7pt, weight: 720, fill: c-muted)[Cloud/DevOps],
